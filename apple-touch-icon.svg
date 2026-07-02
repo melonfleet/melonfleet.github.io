@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="melonfleet">
+  <rect width="180" height="180" fill="#FBF7F0"/>
+  <circle cx="90" cy="90" r="62" fill="#1B5E20"/>
+  <circle cx="90" cy="90" r="55" fill="#FFFFFF"/>
+  <circle cx="90" cy="90" r="50" fill="#FC4A6B"/>
+  <ellipse cx="90" cy="60" rx="3.6" ry="5.4" fill="#241F1A"/>
+  <ellipse cx="66" cy="76" rx="3.6" ry="5.4" fill="#241F1A" transform="rotate(-22 66 76)"/>
+  <ellipse cx="114" cy="76" rx="3.6" ry="5.4" fill="#241F1A" transform="rotate(22 114 76)"/>
+  <ellipse cx="70" cy="108" rx="3.6" ry="5.4" fill="#241F1A" transform="rotate(-38 70 108)"/>
+  <ellipse cx="110" cy="108" rx="3.6" ry="5.4" fill="#241F1A" transform="rotate(38 110 108)"/>
+  <ellipse cx="90" cy="120" rx="3.6" ry="5.4" fill="#241F1A"/>
+</svg>
