@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="FenceLine app icon — fence with gate shield">
+  <defs><clipPath id="squircle"><rect x="0" y="0" width="120" height="120" rx="27"/></clipPath></defs>
+  <g clip-path="url(#squircle)">
+    <rect x="0" y="0" width="120" height="120" fill="#FC4A6B"/>
+    <rect x="0" y="96" width="120" height="24" fill="#1B5E20"/>
+    <rect x="0" y="90" width="120" height="6" fill="#FFFFFF"/>
+    <!-- fence posts -->
+    <rect x="14" y="36" width="8" height="54" rx="2" fill="#1B5E20"/>
+    <rect x="36" y="42" width="8" height="48" rx="2" fill="#7CB342"/>
+    <rect x="76" y="42" width="8" height="48" rx="2" fill="#7CB342"/>
+    <rect x="98" y="36" width="8" height="54" rx="2" fill="#1B5E20"/>
+    <!-- rails -->
+    <rect x="14" y="48" width="92" height="6" rx="2" fill="#1B5E20"/>
+    <rect x="14" y="68" width="92" height="6" rx="2" fill="#1B5E20"/>
+    <!-- gate shield -->
+    <path d="M60 28 L78 36 V54 C78 68, 60 78, 60 78 C60 78, 42 68, 42 54 V36 Z" fill="#FFFFFF"/>
+    <path d="M60 34 L72 40 V54 C72 64, 60 72, 60 72 C60 72, 48 64, 48 54 V40 Z" fill="#7CB342"/>
+    <path d="M60 42 L66 45 V54 C66 60, 60 65, 60 65 C60 65, 54 60, 54 54 V45 Z" fill="#1B5E20"/>
+    <ellipse cx="60" cy="52" rx="2.2" ry="3.2" fill="#241F1A"/>
+  </g>
+</svg>

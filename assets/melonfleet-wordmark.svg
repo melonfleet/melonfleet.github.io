@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 376 100" width="376" height="100" role="img" aria-label="melonfleet">
+  <defs><style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&amp;display=swap');
+    text{font-family:'Ubuntu','Helvetica Neue',Arial,sans-serif;font-weight:500;}
+  </style></defs>
+  <title>melonfleet</title>
+  <text x="0" y="80" font-size="72" fill="#1B5E20">mel</text>
+  <circle cx="147" cy="61" r="18.5" fill="#1B5E20"/>
+  <circle cx="147" cy="61" r="15.4" fill="#FFFFFF"/>
+  <circle cx="147" cy="61" r="13" fill="#FC4A6B"/>
+  <ellipse cx="147" cy="53" rx="1.1" ry="1.7" fill="#241F1A"/>
+  <ellipse cx="141" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/>
+  <ellipse cx="153" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/>
+  <text x="170" y="80" font-size="72" fill="#1B5E20">nfleet</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="CareGrove app icon — grove with support chat bubble">
+  <defs><clipPath id="squircle"><rect x="0" y="0" width="120" height="120" rx="27"/></clipPath></defs>
+  <g clip-path="url(#squircle)">
+    <rect x="0" y="0" width="120" height="120" fill="#FC4A6B"/>
+    <rect x="0" y="96" width="120" height="24" fill="#1B5E20"/>
+    <rect x="0" y="90" width="120" height="6" fill="#FFFFFF"/>
+    <!-- trunks -->
+    <rect x="28" y="68" width="6" height="22" rx="2" fill="#241F1A"/>
+    <rect x="57" y="62" width="7" height="28" rx="2" fill="#241F1A"/>
+    <rect x="86" y="70" width="6" height="20" rx="2" fill="#241F1A"/>
+    <!-- canopies -->
+    <circle cx="31" cy="58" r="16" fill="#A7D98C"/>
+    <circle cx="60" cy="48" r="20" fill="#7CB342"/>
+    <circle cx="89" cy="60" r="15" fill="#A7D98C"/>
+    <circle cx="48" cy="56" r="12" fill="#1B5E20"/>
+    <circle cx="74" cy="54" r="11" fill="#1B5E20"/>
+    <!-- chat bubble (support cue) -->
+    <path d="M52 28 H78 A10 10 0 0 1 88 38 V48 A10 10 0 0 1 78 58 H66 L58 66 L60 58 H52 A10 10 0 0 1 42 48 V38 A10 10 0 0 1 52 28 Z" fill="#FFFFFF"/>
+    <circle cx="56" cy="43" r="2.4" fill="#1B5E20"/>
+    <circle cx="65" cy="43" r="2.4" fill="#1B5E20"/>
+    <circle cx="74" cy="43" r="2.4" fill="#1B5E20"/>
+  </g>
+</svg>

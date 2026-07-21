@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="SeedSilo app icon — silo stocked with watermelon seeds">
+  <defs><clipPath id="squircle"><rect x="0" y="0" width="120" height="120" rx="27"/></clipPath></defs>
+  <g clip-path="url(#squircle)">
+    <rect x="0" y="0" width="120" height="120" fill="#EE7B4D"/>
+    <rect x="0" y="96" width="120" height="24" fill="#1B5E20"/>
+    <rect x="0" y="90" width="120" height="6" fill="#FFFFFF"/>
+    <!-- silo body -->
+    <rect x="34" y="38" width="52" height="52" rx="4" fill="#1B5E20"/>
+    <rect x="38" y="42" width="44" height="44" rx="2" fill="#FC4A6B"/>
+    <!-- dome -->
+    <path d="M34 42 C34 24, 86 24, 86 42 Z" fill="#1B5E20"/>
+    <path d="M40 42 C40 30, 80 30, 80 42 Z" fill="#7CB342"/>
+    <!-- seeds inside -->
+    <ellipse cx="50" cy="54" rx="2.4" ry="3.6" fill="#241F1A" transform="rotate(-18 50 54)"/>
+    <ellipse cx="62" cy="52" rx="2.4" ry="3.6" fill="#241F1A" transform="rotate(12 62 52)"/>
+    <ellipse cx="74" cy="56" rx="2.4" ry="3.6" fill="#241F1A" transform="rotate(-8 74 56)"/>
+    <ellipse cx="54" cy="68" rx="2.4" ry="3.6" fill="#241F1A" transform="rotate(22 54 68)"/>
+    <ellipse cx="66" cy="66" rx="2.4" ry="3.6" fill="#241F1A" transform="rotate(-14 66 66)"/>
+    <ellipse cx="58" cy="78" rx="2.4" ry="3.6" fill="#241F1A" transform="rotate(6 58 78)"/>
+    <ellipse cx="72" cy="76" rx="2.4" ry="3.6" fill="#241F1A" transform="rotate(-20 72 76)"/>
+    <!-- spout -->
+    <rect x="54" y="86" width="12" height="6" rx="1.5" fill="#1B5E20"/>
+  </g>
+</svg>

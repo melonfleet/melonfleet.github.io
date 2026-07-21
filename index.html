@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>melonfleet — self-hosted fleet tools</title>
-<meta name="description" content="melonfleet builds small, independent, self-hosted tools for managing fleets — containers, Macs, and printers. A hobby, built with AI.">
+<title>melonfleet — self-hosted IT &amp; help-desk suite</title>
+<meta name="description" content="melonfleet is a federated suite of self-hostable IT and help-desk tools for small businesses and schools — a friendly alternative to PRTG, SolarWinds, Lansweeper, ServiceNow, and Zendesk.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -17,39 +17,153 @@
 <body>
 <header class="site"><div class="wrap nav">
   <a class="brand" href="/" aria-label="melonfleet home">
-    <svg viewBox="0 0 376 100" style="height:24px;width:auto" xmlns="http://www.w3.org/2000/svg"><text x="0" y="80" font-family="Ubuntu,sans-serif" font-weight="500" font-size="72" fill="#1B5E20">mel</text><circle cx="147" cy="61" r="18.5" fill="#1B5E20"/><circle cx="147" cy="61" r="15.4" fill="#fff"/><circle cx="147" cy="61" r="13" fill="#FC4A6B"/><ellipse cx="147" cy="53" rx="1.1" ry="1.7" fill="#241F1A"/><ellipse cx="141" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/><ellipse cx="153" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/><text x="170" y="80" font-family="Ubuntu,sans-serif" font-weight="500" font-size="72" fill="#1B5E20">nfleet</text></svg>
+    <img src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
   </a>
-  <nav><a href="/about.html">About</a><a href="/brand.html">Brand</a><a href="https://github.com/melonfleet">GitHub</a></nav>
+  <nav>
+    <a href="/#how">How it works</a>
+    <a href="/#products">Products</a>
+    <a href="/about.html">About</a>
+    <a href="/brand.html">Brand</a>
+    <a href="https://github.com/melonfleet">GitHub</a>
+  </nav>
 </div></header>
 
-<main class="wrap">
-  <section class="hero">
-    <svg viewBox="0 0 376 100" style="height:60px;width:auto;display:block;margin-bottom:18px" xmlns="http://www.w3.org/2000/svg"><text x="0" y="80" font-family="Ubuntu,sans-serif" font-weight="500" font-size="72" fill="#1B5E20">mel</text><circle cx="147" cy="61" r="18.5" fill="#1B5E20"/><circle cx="147" cy="61" r="15.4" fill="#fff"/><circle cx="147" cy="61" r="13" fill="#FC4A6B"/><ellipse cx="147" cy="53" rx="1.1" ry="1.7" fill="#241F1A"/><ellipse cx="141" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/><ellipse cx="153" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/><text x="170" y="80" font-family="Ubuntu,sans-serif" font-weight="500" font-size="72" fill="#1B5E20">nfleet</text></svg>
-    <h1>Self-hosted tools for the fleets you run.</h1>
-    <p class="lead">Small, independent tools for managing what you actually own — containers, Macs, and printers. No lock-in, no cloud you didn't choose. A hobby, built with a lot of help from AI.</p>
+<main>
+  <section class="wrap hero">
+    <img class="hero-brand" src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
+    <h1>Self-hosted IT tools that grow together.</h1>
+    <p class="lead">A federated suite of help-desk and fleet tools for small businesses and schools — a cheap, friendly alternative to PRTG, SolarWinds, Lansweeper, ServiceNow, and Zendesk. Run each tool alone, or plant them under Orchard and they integrate.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#products">Explore the suite</a>
+      <a class="btn btn-ghost" href="/about.html">Why melonfleet</a>
+    </div>
   </section>
 
-  <div class="grid">
-    <div class="card" style="--accent:var(--rind)">
-      <h3>Flotilla</h3>
-      <p>Manage a fleet of Apple <code>container</code> containers across your Macs, from the menu bar.</p>
-      <span class="soon">coming soon</span>
+  <section class="wrap section" id="how">
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>Every tool is built to stand alone. Orchard is optional — but when you install tools as add-ons, shared SSO and an event bus stitch them into one workflow.</p>
     </div>
-    <div class="card" style="--accent:var(--flesh)">
-      <h3>MelonPatch</h3>
-      <p>Self-hosted macOS patch management + distribution — a modern take on Installomator.</p>
-      <span class="soon">coming soon</span>
+    <div class="steps">
+      <article class="step" style="--accent:var(--rind)">
+        <span class="step-num">01</span>
+        <h3>Run standalone</h3>
+        <p>Spin up any tool with Docker — its own Postgres, Redis, and local login. Useful on day one, no mothership required.</p>
+      </article>
+      <article class="step" style="--accent:var(--stripe)">
+        <span class="step-num">02</span>
+        <h3>Or plant under Orchard</h3>
+        <p>Orchard’s add-on manager installs tools as containers, wires shared SSO, and puts a unified dashboard on top.</p>
+      </article>
+      <article class="step" style="--accent:var(--flesh)">
+        <span class="step-num">03</span>
+        <h3>Events become tickets</h3>
+        <p>A printer fault, offline host, or failed patch emits on the bus. CareGrove can auto-open (and auto-close) the help-desk ticket.</p>
+      </article>
     </div>
-    <div class="card" style="--accent:var(--cantaloupe)">
-      <h3>InkWarden</h3>
-      <p>Watch your printer fleet — toner, supplies, page counts, alerts — in one dashboard.</p>
-      <span class="soon">coming soon</span>
-    </div>
-  </div>
+  </section>
 
-  <section>
-    <h2>What is this?</h2>
-    <p>melonfleet is a personal playground for building useful, self-hosted software — mostly for macOS and IT administration — designed and written hand-in-hand with AI. It's not a company and nothing here is for sale; it's the fun of seeing what one person and a good assistant can ship. <a href="/about.html">Read the story →</a></p>
+  <section class="wrap section" id="products">
+    <div class="section-head">
+      <h2>The suite</h2>
+      <p>Nine products — platform, framework, help desk, monitoring, inventory, firewall workflow, printers, macOS patching, and a native container manager. Status is honest: built means usable today; planned means designed, not shipped.</p>
+    </div>
+
+    <p class="group-label">Platform</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/orchard.svg" alt="" width="120" height="120">
+        </div>
+        <h3>Orchard</h3>
+        <p>The mothership: unified dashboard, add-on manager that installs tools as containers, and the suite’s SSO identity provider.</p>
+        <div class="card-meta"><span class="badge badge-built">Built</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/trellis.svg" alt="" width="120" height="120">
+        </div>
+        <h3>Trellis</h3>
+        <p>Shared framework every web tool grows on — auth/RBAC, configure-once notifications, watermelon theme, event bus, health checks, and Orchard registration.</p>
+        <div class="card-meta"><span class="badge badge-built">Built</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/caregrove.svg" alt="" width="120" height="120">
+        </div>
+        <h3>CareGrove</h3>
+        <p>Help desk and ticketing — and the integration hub. Subscribes to suite events and turns alerts into tickets via a rule engine.</p>
+        <div class="card-meta"><span class="badge badge-built">Built</span></div>
+      </article>
+    </div>
+
+    <p class="group-label">Operations</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/vinewatch.svg" alt="" width="120" height="120">
+        </div>
+        <h3>VineWatch</h3>
+        <p>Infrastructure monitoring — up/down, SNMP, ping, ports, and bandwidth, in a PRTG-style dashboard that can open CareGrove tickets.</p>
+        <div class="card-meta"><span class="badge badge-planned">Planned</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/seedsilo.svg" alt="" width="120" height="120">
+        </div>
+        <h3>SeedSilo</h3>
+        <p>Asset and inventory management for hardware, software, and licenses — the system of record other tools link back to.</p>
+        <div class="card-meta"><span class="badge badge-planned">Planned</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/fenceline.svg" alt="" width="120" height="120">
+        </div>
+        <h3>FenceLine</h3>
+        <p>Firewall and port change-management: request → review → implement, with an audit trail for what crossed the perimeter.</p>
+        <div class="card-meta"><span class="badge badge-planned">Planned</span></div>
+      </article>
+    </div>
+
+    <p class="group-label">Endpoints &amp; devices</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/inkwarden.svg" alt="" width="120" height="120">
+        </div>
+        <h3>InkWarden</h3>
+        <p>SNMP printer-fleet monitoring — toner, trays, page counts, and fault alerts, with CareGrove tickets on critical events.</p>
+        <div class="card-meta"><span class="badge badge-replat">Re-platforming</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/rindpatch.svg" alt="" width="120" height="120">
+        </div>
+        <h3>RindPatch</h3>
+        <p>Self-hosted macOS patch management and software distribution — catalogue, recipes, and a thin endpoint installer.</p>
+        <div class="card-meta"><span class="badge badge-planned">Planned</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top">
+          <img class="card-icon" src="/assets/icons/flotilla.svg" alt="" width="120" height="120">
+        </div>
+        <h3>Flotilla</h3>
+        <p>Native macOS menu-bar manager for Apple <code>container</code> containers on this Mac and across a small fleet.</p>
+        <div class="card-meta"><span class="badge badge-native">Native app</span></div>
+      </article>
+    </div>
+
+    <div class="suite-strip">
+      <h2>One stack, one look</h2>
+      <p>Web tools share Django + HTMX, Postgres, Celery + Redis, and Docker. Trellis keeps auth, theme, and the event bus consistent. Flotilla is the exception: a Swift menu-bar app for local containers.</p>
+      <ul class="stack-list" aria-label="Technology stack">
+        <li>Django + HTMX</li>
+        <li>Postgres</li>
+        <li>Celery + Redis</li>
+        <li>Docker</li>
+        <li>Swift / SwiftUI (Flotilla)</li>
+      </ul>
+    </div>
   </section>
 </main>
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — melonfleet</title>
-<meta name="description" content="The story behind melonfleet: a hobby project building self-hosted IT tools for macOS, hand-in-hand with AI.">
+<meta name="description" content="The story behind melonfleet: a hobby project building a federated suite of self-hosted IT and help-desk tools, hand-in-hand with AI.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -17,28 +17,40 @@
 <body>
 <header class="site"><div class="wrap nav">
   <a class="brand" href="/" aria-label="melonfleet home">
-    <svg viewBox="0 0 376 100" style="height:24px;width:auto" xmlns="http://www.w3.org/2000/svg"><text x="0" y="80" font-family="Ubuntu,sans-serif" font-weight="500" font-size="72" fill="#1B5E20">mel</text><circle cx="147" cy="61" r="18.5" fill="#1B5E20"/><circle cx="147" cy="61" r="15.4" fill="#fff"/><circle cx="147" cy="61" r="13" fill="#FC4A6B"/><ellipse cx="147" cy="53" rx="1.1" ry="1.7" fill="#241F1A"/><ellipse cx="141" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/><ellipse cx="153" cy="63.5" rx="1.1" ry="1.7" fill="#241F1A"/><text x="170" y="80" font-family="Ubuntu,sans-serif" font-weight="500" font-size="72" fill="#1B5E20">nfleet</text></svg>
+    <img src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
   </a>
-  <nav><a href="/about.html">About</a><a href="/brand.html">Brand</a><a href="https://github.com/melonfleet">GitHub</a></nav>
+  <nav>
+    <a href="/#how">How it works</a>
+    <a href="/#products">Products</a>
+    <a href="/about.html" aria-current="page">About</a>
+    <a href="/brand.html">Brand</a>
+    <a href="https://github.com/melonfleet">GitHub</a>
+  </nav>
 </div></header>
 
-<main class="wrap">
-  <h1 style="margin-top:48px">About melonfleet</h1>
-  <p class="lead">melonfleet is a hobby — a small workshop for building friendly, self-hosted tools for the kinds of fleets IT people spend their days wrangling.</p>
+<main class="wrap wrap-narrow">
+  <header class="page-intro">
+    <h1>About melonfleet</h1>
+    <p class="lead">melonfleet is a hobby workshop for a federated suite of self-hostable IT and help-desk tools — monitoring, inventory, ticketing, printers, macOS patching, and more — that can run alone or grow together under one mothership.</p>
+  </header>
 
   <h2>The short version</h2>
-  <p>By day, the person behind melonfleet is a systems engineer who keeps fleets of Macs running — and the occasional stubborn printer. By night, melonfleet is where the same problems get re-approached for fun: what would these tools look like if you built them from scratch, kept them <strong>self-hosted</strong>, and owed nothing to any vendor?</p>
+  <p>By day, the person behind melonfleet keeps fleets running — Macs, printers, the usual IT grind. By night, those same problems get re-approached for fun: what would a small-business / school stack look like if you built it from scratch, kept it <strong>self-hosted</strong>, and owed nothing to the enterprise vendor catalogue?</p>
+
+  <h2>A suite, not a single app</h2>
+  <p>Enterprise IT stacks are usually one expensive platform or a pile of unrelated tools that never talk. melonfleet takes the middle path: each product is a focused tool (help desk, infra monitoring, asset inventory, firewall change workflow, printer fleet, macOS patches, local containers), and <strong>Orchard</strong> can adopt them as Docker add-ons with shared SSO and an event bus. A VineWatch host-down or InkWarden toner fault can become a CareGrove ticket without copy-paste.</p>
+  <p>That’s the pitch against the usual suspects — PRTG / SolarWinds for monitoring, Lansweeper for assets, ServiceNow / Zendesk for tickets — at a scale and price that fits a small shop, not a Fortune 500 RFP.</p>
 
   <h2>Built with AI, on purpose</h2>
-  <p>Every melonfleet tool is designed and written <em>hand-in-hand with an AI assistant</em>. That's half the point — it's an ongoing experiment in how far one curious person and a capable pair-programmer can get. The architecture, the code, the branding, even this page: all worked out in conversation.</p>
+  <p>Every melonfleet tool is designed and written <em>hand-in-hand with an AI assistant</em>. That’s half the point — an ongoing experiment in how far one curious person and a capable pair-programmer can get. Architecture, code, branding, even this page: worked out in conversation.</p>
 
   <h2>The ethos</h2>
-  <p>Self-hosted first. Independent. No lock-in, free defaults, and tools you run on hardware you actually own. Nothing here phones home to a cloud you didn't choose. It's software built the way a home cook builds a garden — for the pleasure of it, and because the shop-bought version wasn't quite right.</p>
+  <p>Self-hosted first. Independent. No lock-in, free defaults, and software you run on hardware you actually own. Nothing here phones home to a cloud you didn’t choose. It’s built the way a home cook tends a garden — for the pleasure of it, and because the shop-bought version wasn’t quite right.</p>
 
   <h2>Nothing serious</h2>
-  <p>melonfleet isn't a company and nothing here is for sale. It's a playground. If a tool turns out to be useful to you too — wonderful, that's a bonus. And maybe, one day, it becomes something the whole family tinkers on together. For now, it's just for the joy of making things. 🍉</p>
+  <p>melonfleet isn’t a company and nothing here is for sale. It’s a playground. If a tool turns out useful to you too — wonderful, that’s a bonus. For now, it’s for the joy of making things.</p>
 
-  <p style="margin-top:2em"><a href="/brand.html">See how the brand came together →</a></p>
+  <p style="margin-top:2em"><a href="/#products">See the full suite →</a> · <a href="/brand.html">How the brand came together →</a></p>
 </main>
 
 <footer class="site"><div class="wrap">

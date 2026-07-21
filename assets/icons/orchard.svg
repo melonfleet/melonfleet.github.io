@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Orchard app icon — orchard of watermelon cross-sections">
+  <defs><clipPath id="squircle"><rect x="0" y="0" width="120" height="120" rx="27"/></clipPath></defs>
+  <g clip-path="url(#squircle)">
+    <rect x="0" y="0" width="120" height="120" fill="#FC4A6B"/>
+    <rect x="0" y="96" width="120" height="24" fill="#1B5E20"/>
+    <rect x="0" y="90" width="120" height="6" fill="#FFFFFF"/>
+    <!-- 2×2 orchard grid of mini cross-sections -->
+    <!-- top-left -->
+    <circle cx="40" cy="38" r="16" fill="#1B5E20"/>
+    <circle cx="40" cy="38" r="13" fill="#FFFFFF"/>
+    <circle cx="40" cy="38" r="10.5" fill="#E63956"/>
+    <ellipse cx="40" cy="32" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="34.5" cy="41" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="45.5" cy="41" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <!-- top-right -->
+    <circle cx="80" cy="38" r="16" fill="#1B5E20"/>
+    <circle cx="80" cy="38" r="13" fill="#FFFFFF"/>
+    <circle cx="80" cy="38" r="10.5" fill="#E63956"/>
+    <ellipse cx="80" cy="32" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="74.5" cy="41" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="85.5" cy="41" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <!-- bottom-left -->
+    <circle cx="40" cy="72" r="16" fill="#1B5E20"/>
+    <circle cx="40" cy="72" r="13" fill="#FFFFFF"/>
+    <circle cx="40" cy="72" r="10.5" fill="#E63956"/>
+    <ellipse cx="40" cy="66" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="34.5" cy="75" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="45.5" cy="75" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <!-- bottom-right -->
+    <circle cx="80" cy="72" r="16" fill="#1B5E20"/>
+    <circle cx="80" cy="72" r="13" fill="#FFFFFF"/>
+    <circle cx="80" cy="72" r="10.5" fill="#E63956"/>
+    <ellipse cx="80" cy="66" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="74.5" cy="75" rx="1.4" ry="2.1" fill="#241F1A"/>
+    <ellipse cx="85.5" cy="75" rx="1.4" ry="2.1" fill="#241F1A"/>
+  </g>
+</svg>
