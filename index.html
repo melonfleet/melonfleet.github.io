@@ -15,11 +15,15 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site"><div class="wrap nav">
   <a class="brand" href="/" aria-label="melonfleet home">
     <img src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
   </a>
-  <nav>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span></span>
+  </button>
+  <nav id="site-nav" class="nav-links">
     <a href="/#how">How it works</a>
     <a href="/#products">Products</a>
     <a href="/about.html">About</a>
@@ -28,14 +32,17 @@
   </nav>
 </div></header>
 
-<main>
+<main id="main">
   <section class="wrap hero">
-    <img class="hero-brand" src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
-    <h1>Self-hosted IT tools that grow together.</h1>
-    <p class="lead">A federated suite of help-desk and fleet tools for small businesses and schools — a cheap, friendly alternative to PRTG, SolarWinds, Lansweeper, ServiceNow, and Zendesk. Run each tool alone, or plant them under Orchard and they integrate.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#products">Explore the suite</a>
-      <a class="btn btn-ghost" href="/about.html">Why melonfleet</a>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <img class="hero-brand" src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
+      <h1>Self-hosted IT tools that grow together.</h1>
+      <p class="lead">A federated suite of help-desk and fleet tools for small businesses and schools — a cheap, friendly alternative to PRTG, SolarWinds, Lansweeper, ServiceNow, and Zendesk. Run each tool alone, or plant them under Orchard and they integrate.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#products">Explore the suite</a>
+        <a class="btn btn-ghost" href="/about.html">Why melonfleet</a>
+      </div>
     </div>
   </section>
 
@@ -168,8 +175,51 @@
 </main>
 
 <footer class="site"><div class="wrap">
-  <span>© 2026 melonfleet · a hobby, made for fun</span>
-  <span><a href="/about.html">About</a> · <a href="/brand.html">Brand</a> · <a href="https://github.com/melonfleet">GitHub</a> · <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a></span>
+  <div class="footer-brand">
+    <img src="/assets/melonfleet-wordmark.svg" alt="" width="376" height="100" aria-hidden="true">
+    <span>© 2026 melonfleet · a hobby, made for fun</span>
+  </div>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/brand.html">Brand</a>
+    <a href="https://github.com/melonfleet">GitHub</a>
+    <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a>
+  </nav>
 </div></footer>
+<script>
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  var mq = window.matchMedia('(max-width: 720px)');
+
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    nav.classList.toggle('is-open', open);
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && mq.matches) setOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+
+  function onViewportChange() {
+    if (!mq.matches) setOpen(false);
+  }
+  if (mq.addEventListener) mq.addEventListener('change', onViewportChange);
+  else if (mq.addListener) mq.addListener(onViewportChange);
+})();
+</script>
 </body>
 </html>

@@ -15,11 +15,15 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site"><div class="wrap nav">
   <a class="brand" href="/" aria-label="melonfleet home">
     <img src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
   </a>
-  <nav>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span></span>
+  </button>
+  <nav id="site-nav" class="nav-links">
     <a href="/#how">How it works</a>
     <a href="/#products">Products</a>
     <a href="/about.html" aria-current="page">About</a>
@@ -28,7 +32,7 @@
   </nav>
 </div></header>
 
-<main class="wrap wrap-narrow">
+<main id="main" class="wrap wrap-narrow page-body">
   <header class="page-intro">
     <h1>About melonfleet</h1>
     <p class="lead">melonfleet is a hobby workshop for a federated suite of self-hostable IT and help-desk tools — monitoring, inventory, ticketing, printers, macOS patching, and more — that can run alone or grow together under one mothership.</p>
@@ -50,12 +54,55 @@
   <h2>Nothing serious</h2>
   <p>melonfleet isn’t a company and nothing here is for sale. It’s a playground. If a tool turns out useful to you too — wonderful, that’s a bonus. For now, it’s for the joy of making things.</p>
 
-  <p style="margin-top:2em"><a href="/#products">See the full suite →</a> · <a href="/brand.html">How the brand came together →</a></p>
+  <p class="page-links"><a href="/#products">See the full suite →</a> · <a href="/brand.html">How the brand came together →</a></p>
 </main>
 
 <footer class="site"><div class="wrap">
-  <span>© 2026 melonfleet · a hobby, made for fun</span>
-  <span><a href="/about.html">About</a> · <a href="/brand.html">Brand</a> · <a href="https://github.com/melonfleet">GitHub</a> · <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a></span>
+  <div class="footer-brand">
+    <img src="/assets/melonfleet-wordmark.svg" alt="" width="376" height="100" aria-hidden="true">
+    <span>© 2026 melonfleet · a hobby, made for fun</span>
+  </div>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/brand.html">Brand</a>
+    <a href="https://github.com/melonfleet">GitHub</a>
+    <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a>
+  </nav>
 </div></footer>
+<script>
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  var mq = window.matchMedia('(max-width: 720px)');
+
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    nav.classList.toggle('is-open', open);
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && mq.matches) setOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+
+  function onViewportChange() {
+    if (!mq.matches) setOpen(false);
+  }
+  if (mq.addEventListener) mq.addEventListener('change', onViewportChange);
+  else if (mq.addListener) mq.addListener(onViewportChange);
+})();
+</script>
 </body>
 </html>

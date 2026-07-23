@@ -15,11 +15,15 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site"><div class="wrap nav">
   <a class="brand" href="/" aria-label="melonfleet home">
     <img src="/assets/melonfleet-wordmark.svg" alt="melonfleet" width="376" height="100">
   </a>
-  <nav>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span></span>
+  </button>
+  <nav id="site-nav" class="nav-links">
     <a href="/#how">How it works</a>
     <a href="/#products">Products</a>
     <a href="/about.html">About</a>
@@ -28,7 +32,7 @@
   </nav>
 </div></header>
 
-<main class="wrap wrap-narrow">
+<main id="main" class="wrap wrap-narrow page-body">
   <header class="page-intro">
     <h1>The melonfleet brand</h1>
     <p class="lead">One friendly identity across a federated suite of self-hosted IT tools. Here’s how colour, type, and names fit together.</p>
@@ -60,39 +64,39 @@
   <h2>Product icons</h2>
   <p>Each product gets a squircle app icon in the same family — watermelon motifs tied to the job (orchard rows, trellis lattice, vine-eye, silo of seeds, grove with a chat bubble, fence gate, rind bandage, ink-drop shield, sail-slice). Accents come from the melon spectrum so marks stay distinct without borrowing status reds.</p>
   <div class="grid" style="margin-top:16px" aria-label="Product icons">
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/orchard.svg" alt="Orchard icon" width="120" height="120">
       <h3>Orchard</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/trellis.svg" alt="Trellis icon" width="120" height="120">
       <h3>Trellis</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/caregrove.svg" alt="CareGrove icon" width="120" height="120">
       <h3>CareGrove</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/vinewatch.svg" alt="VineWatch icon" width="120" height="120">
       <h3>VineWatch</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/seedsilo.svg" alt="SeedSilo icon" width="120" height="120">
       <h3>SeedSilo</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/fenceline.svg" alt="FenceLine icon" width="120" height="120">
       <h3>FenceLine</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/inkwarden.svg" alt="InkWarden icon" width="120" height="120">
       <h3>InkWarden</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/rindpatch.svg" alt="RindPatch icon" width="120" height="120">
       <h3>RindPatch</h3>
     </article>
-    <article class="card" style="align-items:center;text-align:center;padding:16px">
+    <article class="card icon-card">
       <img class="card-icon" src="/assets/icons/flotilla.svg" alt="Flotilla icon" width="120" height="120">
       <h3>Flotilla</h3>
     </article>
@@ -116,12 +120,55 @@
   <h2>How it came about</h2>
   <p>It started as a way to keep a growing pile of hobby projects tidy under one name. The watermelon stuck first — then the palette, fonts, icons, and product names, each earning a little double-meaning along the way. None of it is precious; it’s a brand built for the fun of building, the same as everything else here.</p>
 
-  <p style="margin-top:2em"><a href="/">← Back to the suite</a> · <a href="/about.html">The story</a></p>
+  <p class="page-links"><a href="/">← Back to the suite</a> · <a href="/about.html">The story</a></p>
 </main>
 
 <footer class="site"><div class="wrap">
-  <span>© 2026 melonfleet · a hobby, made for fun</span>
-  <span><a href="/about.html">About</a> · <a href="/brand.html">Brand</a> · <a href="https://github.com/melonfleet">GitHub</a> · <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a></span>
+  <div class="footer-brand">
+    <img src="/assets/melonfleet-wordmark.svg" alt="" width="376" height="100" aria-hidden="true">
+    <span>© 2026 melonfleet · a hobby, made for fun</span>
+  </div>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/about.html">About</a>
+    <a href="/brand.html">Brand</a>
+    <a href="https://github.com/melonfleet">GitHub</a>
+    <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a>
+  </nav>
 </div></footer>
+<script>
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  var mq = window.matchMedia('(max-width: 720px)');
+
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    nav.classList.toggle('is-open', open);
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(btn.getAttribute('aria-expanded') !== 'true');
+  });
+
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && mq.matches) setOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+
+  function onViewportChange() {
+    if (!mq.matches) setOpen(false);
+  }
+  if (mq.addEventListener) mq.addEventListener('change', onViewportChange);
+  else if (mq.addListener) mq.addListener(onViewportChange);
+})();
+</script>
 </body>
 </html>
