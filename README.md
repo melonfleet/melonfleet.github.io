@@ -9,8 +9,8 @@ The melonfleet landing site — static HTML/CSS served via **GitHub Pages** at
 - `about.html` — project story and ethos
 - `brand.html` — palette, type, wordmark, product icons, naming glossary
 - `style.css` — watermelon design system (no build step)
-- `assets/` — wordmark, avatar, and per-product icons copied from `../brand/` for Pages
-  (GitHub Pages only serves this repo; do not link to `../brand/...`)
+- `assets/` — wordmark, avatar, and per-product icons copied from `../design/brand/` for Pages
+  (GitHub Pages only serves this repo; do not link to `../design/brand/...`)
 
 ## Keep intact
 
