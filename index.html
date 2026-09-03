@@ -25,9 +25,10 @@
   </button>
   <nav id="site-nav" class="nav-links">
     <a href="/#what">What it does</a>
+    <a href="/#tour">Tour</a>
     <a href="/#requirements">Requirements</a>
     <a href="/about.html">About</a>
-    <a href="https://github.com/melonfleet">GitHub</a>
+    <a href="https://github.com/melonfleet" target="_blank" rel="noopener">GitHub</a>
   </nav>
 </div></header>
 
@@ -73,6 +74,31 @@
     </div>
   </section>
 
+  <section class="wrap section" id="tour">
+    <div class="section-head">
+      <h2>A look inside</h2>
+      <p>Four of the screens, as they actually look &mdash; captured from the app, not mocked up.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot">
+        <a class="shot-link" href="/assets/shots/dash.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/dash.png" alt="Flotilla's dashboard: host summary, a CPU and memory graph, disk and network throughput, and a per-container utilisation table." width="1440" height="940"></a>
+        <figcaption><strong>Dashboard.</strong> What the whole Mac is doing &mdash; pressure over five minutes, disk and network throughput, and every container's CPU, memory and I/O in one table.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a class="shot-link" href="/assets/shots/containers.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/containers.png" alt="The containers list: name, image, published ports, live CPU and memory, IP address, and per-row actions." width="1440" height="940" loading="lazy"></a>
+        <figcaption><strong>Containers.</strong> Live CPU and memory per container, published ports, addresses, and start/stop/delete on the row. Switch to cards if you prefer.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a class="shot-link" href="/assets/shots/logs.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/logs.png" alt="The aggregated log feed, with each line tagged by the container or machine it came from." width="1440" height="940" loading="lazy"></a>
+        <figcaption><strong>Logs.</strong> Every source in one feed, each line tagged with where it came from, filterable by name or text. No tab-hopping between containers.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a class="shot-link" href="/assets/shots/machines.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/machines.png" alt="The machines list: the virtual machines containers run inside, with CPUs, memory and IP address." width="1440" height="940" loading="lazy"></a>
+        <figcaption><strong>Machines.</strong> The virtual machines your containers actually run inside &mdash; create, resize, start, stop, and open a shell in one.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="wrap section" id="requirements">
     <div class="section-head">
       <h2>Requirements</h2>
@@ -86,7 +112,7 @@
       </article>
       <article class="card">
         <h3>Apple&rsquo;s <code>container</code> CLI</h3>
-        <p>Install it from <a href="https://github.com/apple/container">apple/container</a>. Flotilla drives that tool &mdash; it does not bundle or replace it, and it starts the runtime for you if the service is not running.</p>
+        <p>Install it from <a href="https://github.com/apple/container" target="_blank" rel="noopener">apple/container</a>. Flotilla drives that tool &mdash; it does not bundle or replace it, and it starts the runtime for you if the service is not running.</p>
         <div class="card-meta"><span class="badge badge-built">Free</span></div>
       </article>
       <article class="card">
@@ -111,7 +137,7 @@
   </div>
   <nav class="footer-links" aria-label="Footer">
     <a href="/about.html">About</a>
-    <a href="https://github.com/melonfleet">GitHub</a>
+    <a href="https://github.com/melonfleet" target="_blank" rel="noopener">GitHub</a>
     <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a>
   </nav>
 </div></footer>

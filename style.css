@@ -457,3 +457,27 @@ footer.site .wrap{
   .card:hover .card-icon{transform:none;}
   body{background-attachment:scroll;}
 }
+
+/* ---------- Screenshot tour ----------
+   Auto-fit rather than a fixed column count: a UI screenshot needs width to stay legible, so on a
+   narrow window these become one per row instead of two cramped ones. The explicit width/height on
+   each img reserves the right space before the file loads, so the page does not jump. */
+.shots{
+  display:grid;gap:22px;margin-top:24px;
+  grid-template-columns:repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+}
+.shot{margin:0;}
+.shot img{
+  width:100%;height:auto;display:block;
+  /* A white plate under the image: the captures are shadow-free PNGs of a light window, and on a
+     cream page an unbordered edge reads as a bleed rather than a screenshot. */
+  background:#fff;border:1px solid var(--stone);border-radius:12px;box-shadow:var(--shadow-md);
+}
+.shot figcaption{margin-top:10px;font-size:0.92rem;line-height:1.6;color:var(--slate);}
+.shot figcaption strong{color:var(--seed);}
+.shot-link{display:block;}
+/* The image already carries the border and radius, so the link must not add its own underline or
+   colour — an underlined screenshot looks like a broken image. */
+.shot-link:hover{text-decoration:none;}
+.shot-link:hover img{border-color:var(--stripe);box-shadow:var(--shadow-md);}
+.shot-link:focus-visible img{outline:2px solid var(--flesh-deep);outline-offset:3px;}
