@@ -527,12 +527,36 @@ footer.site .wrap{
 .shot-link:hover img{border-color:var(--stripe);box-shadow:var(--shadow-md);}
 .shot-link:focus-visible img{outline:2px solid var(--flesh-deep);outline-offset:3px;}
 
-/* Two side by side once there is room for both to stay legible. Below that a dense UI screenshot
-   at half width is unreadable, so one at a time. */
-@media (min-width: 1040px){
-  .slide{flex-basis:50%;}
-}
-
+/* Always one slide at a time. There used to be a two-up rule above 1040px; a screenshot is the
+   product here, and two half-width screenshots are two things you cannot read rather than one you
+   can. */
 @media (prefers-reduced-motion: no-preference){
   .carousel-track{scroll-behavior:smooth;}
+}
+
+/* ---------- Hero, with the carousel as its subject ----------
+   The hero no longer opens with a headline, so it needs less top padding than a text hero and the
+   controls need to sit centred under the image rather than ranged left with the copy. */
+.hero-tour{padding-top:28px;}
+.hero-tour .carousel{margin-top:0;}
+.hero-actions-centred{justify-content:center;margin-top:22px;}
+
+/* The headline, capitalised in rendering only.
+   Caps need three adjustments or they just shout: extra letter-spacing (capitals set tighter than
+   lowercase at the same tracking), a smaller size (caps occupy the full cap-height so they read
+   larger than the same point size in sentence case), and a tighter line-height. */
+.hero-title{
+  text-transform:uppercase;
+  letter-spacing:0.02em;
+  font-size:clamp(1.6rem, 4vw, 2.6rem);
+  line-height:1.15;
+  max-width:22ch;
+  margin:0 0 14px;
+}
+/* The description, as a subheading under it rather than body copy: narrower measure and a size
+   between the headline and the page's body text, so the eye goes title → subtitle → screenshot. */
+.hero-sub{
+  max-width:58ch;
+  font-size:1.02rem;
+  margin-bottom:26px;
 }

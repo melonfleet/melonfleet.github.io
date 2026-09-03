@@ -25,7 +25,6 @@
   </button>
   <nav id="site-nav" class="nav-links">
     <a href="/#what">What it does</a>
-    <a href="/#tour">Tour</a>
     <a href="/#requirements">Requirements</a>
     <a href="/about.html">About</a>
     <a href="https://github.com/melonfleet" target="_blank" rel="noopener">GitHub</a>
@@ -33,52 +32,17 @@
 </div></header>
 
 <main id="main">
-  <section class="wrap hero">
+  <section class="wrap hero hero-tour" id="tour">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-inner">
-      <!-- The app's own icon, not the melonfleet wordmark. The wordmark is in the header and the
-           footer where a maker's mark belongs; giving it the hero of a page about one product made
-           melonfleet the headline and Flotilla the footnote. -->
       <img class="hero-icon" src="/assets/icons/flotilla.svg" alt="" width="120" height="120">
       <p class="eyebrow">Flotilla &middot; by melonfleet</p>
-      <h1>Apple&rsquo;s containers, with a window.</h1>
-      <p class="lead">Apple shipped <code>container</code> for macOS and left it on the command line. Flotilla is the native app on top: containers, images, volumes, networks and the virtual machines they run inside &mdash; plus a real terminal in every container. Free, no account, no telemetry.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#requirements">Requirements &amp; install</a>
-        <a class="btn btn-ghost" href="/about.html">Why melonfleet</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap section" id="what">
-    <div class="section-head">
-      <h2>What it does</h2>
-      <p>Everything goes through Apple&rsquo;s own <code>container</code> CLI. Flotilla builds and validates every command before it runs, and shows you the exact one it used &mdash; nothing happens that you could not have typed yourself.</p>
-    </div>
-    <div class="steps">
-      <article class="step" style="--accent:var(--rind)">
-        <span class="step-num">01</span>
-        <h3>Run and watch</h3>
-        <p>Start, stop, restart and delete containers, with live CPU, memory, ports and addresses. Logs from every source in one feed you can filter.</p>
-      </article>
-      <article class="step" style="--accent:var(--stripe)">
-        <span class="step-num">02</span>
-        <h3>Shell straight in</h3>
-        <p>A real terminal inside any running container, and inside the virtual machines themselves. No <code>docker exec</code> incantation to remember.</p>
-      </article>
-      <article class="step" style="--accent:var(--flesh)">
-        <span class="step-num">03</span>
-        <h3>Everything else, too</h3>
-        <p>Images, volumes, networks and machines &mdash; build, pull, prune, create and inspect, from a menu-bar icon or a full window.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="wrap section" id="tour">
-    <div class="section-head">
-      <h2>A look inside</h2>
-      <p>Four of the screens, as they actually look &mdash; captured from the app, not mocked up.</p>
-    </div>
+      <!-- Uppercased in CSS, not in the markup: the text stays sentence case for screen readers,
+           search results and the browser tab, and only the rendering is capitalised. Caps also need
+           letter-spacing and a smaller size to stay readable, which is why this is not simply the
+           old headline shouting. -->
+      <h1 class="hero-title">Apple&rsquo;s containers, with a window.</h1>
+      <p class="lead hero-sub">Apple shipped <code>container</code> for macOS and left it on the command line. Flotilla is the native app on top: containers, images, volumes, networks and the virtual machines they run inside &mdash; plus a real terminal in every container. Free, no account, no telemetry.</p>
     <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Screenshot tour">
       <!-- The track is a scroll-snap strip, so with JavaScript disabled this is still a usable
            swipeable/scrollable gallery rather than a single frozen image. The buttons and dots
@@ -115,6 +79,35 @@
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
+    </div>
+      <div class="hero-actions hero-actions-centred">
+        <a class="btn btn-primary" href="#requirements">Requirements &amp; install</a>
+        <a class="btn btn-ghost" href="/about.html">Why melonfleet</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="what">
+    <div class="section-head">
+      <h2>What it does</h2>
+      <p>Everything goes through Apple&rsquo;s own <code>container</code> CLI. Flotilla builds and validates every command before it runs, and shows you the exact one it used &mdash; nothing happens that you could not have typed yourself.</p>
+    </div>
+    <div class="steps">
+      <article class="step" style="--accent:var(--rind)">
+        <span class="step-num">01</span>
+        <h3>Run and watch</h3>
+        <p>Start, stop, restart and delete containers, with live CPU, memory, ports and addresses. Logs from every source in one feed you can filter.</p>
+      </article>
+      <article class="step" style="--accent:var(--stripe)">
+        <span class="step-num">02</span>
+        <h3>Shell straight in</h3>
+        <p>A real terminal inside any running container, and inside the virtual machines themselves. No <code>docker exec</code> incantation to remember.</p>
+      </article>
+      <article class="step" style="--accent:var(--flesh)">
+        <span class="step-num">03</span>
+        <h3>Everything else, too</h3>
+        <p>Images, volumes, networks and machines &mdash; build, pull, prune, create and inspect, from a menu-bar icon or a full window.</p>
+      </article>
     </div>
   </section>
 
@@ -204,13 +197,19 @@
       // landed every time. So the carousel looked completely dead while every measurement said the
       // layout was correct. Smooth is still attempted, because where it works it is nicer; this
       // just refuses to let the animation be load-bearing.
-      if (!reduce) {
-        window.setTimeout(function () {
-          if (Math.abs(track.scrollLeft - left) > 4) {
-            track.scrollTo({ left: left, behavior: 'instant' });
-          }
-        }, 420);
-      }
+      // Update the controls from our own action rather than waiting to be told.
+      //
+      // The dots and arrows were driven only by the track's `scroll` event, and that event does not
+      // always arrive: measured here, `scrollLeft` went 1000 → 2000 with **zero** scroll events
+      // dispatched, so `sync` never ran and the dots sat on the first slide however far you paged.
+      // The scroll listener stays for swipes and trackpad scrolling, where it does fire; this makes
+      // button and dot presses self-reporting instead of hoping for an event.
+      window.setTimeout(function () {
+        if (!reduce && Math.abs(track.scrollLeft - left) > 4) {
+          track.scrollTo({ left: left, behavior: 'instant' });
+        }
+        sync();
+      }, 420);
     }
 
     function sync() {
@@ -238,12 +237,13 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIndex() - 1); }
     });
 
-    var ticking = false;
-    track.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () { sync(); ticking = false; });
-    });
+    // Called straight from the scroll event, with no requestAnimationFrame throttle.
+    //
+    // The throttled version looked sensible and was wrong: browsers pause rAF on a hidden page, so
+    // the dots and the arrow disabled-states silently stopped tracking the scroll position whenever
+    // the page was not visible — and then showed stale state on return. `sync` reads four dots, two
+    // buttons and four slide offsets; throttling that is optimising the wrong thing.
+    track.addEventListener('scroll', sync, { passive: true });
     // Two slides fit side by side above 1040px, so the end position changes with the viewport.
     window.addEventListener('resize', sync);
     sync();
