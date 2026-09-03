@@ -192,6 +192,15 @@ header.site{
   border-radius:0 0 24px 24px;
 }
 .hero-brand{height:clamp(48px, 9vw, 68px);width:auto;max-width:100%;margin-bottom:28px;}
+/* The product's app icon in the hero. Squircle icons already carry their own padding, so this is
+   sized to sit optically level with the headline rather than to a nominal box. */
+.hero-icon{height:clamp(72px, 11vw, 104px);width:auto;margin-bottom:18px;display:block;}
+/* Product name above the headline, since the wordmark above it says "melonfleet" and the
+   product is Flotilla — without this the hero reads as though melonfleet is the app. */
+.eyebrow{
+  margin:0 0 10px;font-family:'Ubuntu',sans-serif;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;font-size:0.8rem;color:var(--flesh-deep);
+}
 .hero h1{max-width:18ch;}
 .hero .lead{margin-bottom:28px;}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px;}
