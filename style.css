@@ -458,26 +458,81 @@ footer.site .wrap{
   body{background-attachment:scroll;}
 }
 
-/* ---------- Screenshot tour ----------
-   Auto-fit rather than a fixed column count: a UI screenshot needs width to stay legible, so on a
-   narrow window these become one per row instead of two cramped ones. The explicit width/height on
-   each img reserves the right space before the file loads, so the page does not jump. */
-.shots{
-  display:grid;gap:22px;margin-top:24px;
-  grid-template-columns:repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+/* ---------- Screenshot tour (carousel) ----------
+
+   Built on scroll-snap rather than transforms. Three reasons: with JavaScript off it is still a
+   scrollable, snapping gallery instead of one frozen image; a trackpad swipe and a touch drag work
+   for free, which a transform carousel has to reimplement badly; and the browser keeps track of
+   which slide is showing, so the dots are derived from real scroll position rather than from a
+   counter that can drift out of sync with what is on screen. */
+.carousel{position:relative;margin-top:24px;}
+
+.carousel-track{
+  display:flex;gap:0;
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  /* The scrollbar is noise here: the dots and arrows already say where you are. */
+  scrollbar-width:none;
+  border-radius:12px;
 }
-.shot{margin:0;}
-.shot img{
+.carousel-track::-webkit-scrollbar{display:none;}
+.carousel-track:focus-visible{outline:2px solid var(--flesh-deep);outline-offset:4px;}
+
+.slide{
+  margin:0;flex:0 0 100%;scroll-snap-align:center;
+  /* Padding rather than gap: a gap on a snapping track leaves a sliver of the neighbour visible at
+     rest, which reads as a rendering fault rather than a hint. */
+  padding:0 2px;
+  display:flex;flex-direction:column;
+}
+.slide img{
   width:100%;height:auto;display:block;
-  /* A white plate under the image: the captures are shadow-free PNGs of a light window, and on a
-     cream page an unbordered edge reads as a bleed rather than a screenshot. */
   background:#fff;border:1px solid var(--stone);border-radius:12px;box-shadow:var(--shadow-md);
 }
-.shot figcaption{margin-top:10px;font-size:0.92rem;line-height:1.6;color:var(--slate);}
-.shot figcaption strong{color:var(--seed);}
+.slide figcaption{
+  margin-top:12px;font-size:0.95rem;line-height:1.6;color:var(--slate);
+  /* Reserves room for the longest caption so the track does not change height between slides —
+     a carousel that grows and shrinks as you page through it makes the whole section jump. */
+  min-height:3.2em;
+}
+.slide figcaption strong{color:var(--seed);}
+
+.carousel-controls{
+  display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px;
+}
+.carousel-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;padding:0;
+  border:1px solid var(--stone);border-radius:999px;background:#fff;color:var(--rind);
+  cursor:pointer;transition:border-color .15s, color .15s, transform .15s;
+}
+.carousel-btn svg{width:18px;height:18px;}
+.carousel-btn:hover{border-color:var(--rind);transform:translateY(-1px);}
+.carousel-btn:focus-visible{outline:2px solid var(--flesh-deep);outline-offset:2px;}
+.carousel-btn[disabled]{opacity:0.35;cursor:default;transform:none;}
+
+.carousel-dots{display:flex;align-items:center;gap:8px;}
+.dot{
+  width:9px;height:9px;padding:0;border-radius:999px;cursor:pointer;
+  border:1px solid var(--stone);background:transparent;transition:background .15s, border-color .15s;
+}
+.dot:hover{border-color:var(--rind);}
+.dot[aria-current="true"]{background:var(--flesh-deep);border-color:var(--flesh-deep);}
+.dot:focus-visible{outline:2px solid var(--flesh-deep);outline-offset:3px;}
+
 .shot-link{display:block;}
 /* The image already carries the border and radius, so the link must not add its own underline or
    colour — an underlined screenshot looks like a broken image. */
 .shot-link:hover{text-decoration:none;}
 .shot-link:hover img{border-color:var(--stripe);box-shadow:var(--shadow-md);}
 .shot-link:focus-visible img{outline:2px solid var(--flesh-deep);outline-offset:3px;}
+
+/* Two side by side once there is room for both to stay legible. Below that a dense UI screenshot
+   at half width is unreadable, so one at a time. */
+@media (min-width: 1040px){
+  .slide{flex-basis:50%;}
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .carousel-track{scroll-behavior:smooth;}
+}
