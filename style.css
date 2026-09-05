@@ -42,7 +42,11 @@ img{max-width:100%;height:auto;display:block;}
 }
 .wrap-narrow{--content:720px;}
 
-a{color:var(--flesh-deep);text-decoration:none;}
+/* rind, not flesh-deep. flesh-deep on cream measures 3.87:1 and on white 4.13:1, both under
+   AA's 4.5:1 for body-sized text; rind is 7.37:1 on cream and 7.87:1 on white. BRAND.md lists
+   flesh-deep for links, so this is a deliberate departure on contrast grounds and stays inside
+   the palette rather than inventing a darker pink. */
+a{color:var(--rind);text-decoration:none;}
 a:hover{text-decoration:underline;}
 a:focus-visible,
 button:focus-visible,
@@ -170,7 +174,7 @@ header.site{
 
 /* ── Hero ──
    Rhythm: icon → 22 → eyebrow → 18 → headline → 26 → lede → 40 → carousel → 44 → buttons. */
-.hero{padding-block:48px 0;}
+.hero{padding-block:32px 0;}
 .hero-head{display:flex;flex-direction:column;align-items:center;text-align:center;}
 .hero-icon{height:88px;width:88px;margin:0;}
 .hero-eyebrow{
@@ -184,12 +188,17 @@ header.site{
    Caps need three adjustments or they just shout: extra letter-spacing (capitals set tighter than
    lowercase at the same tracking), a smaller size than the equivalent sentence-case h1 (60 rather
    than ~72, since caps occupy the full cap-height), and a tighter line-height. */
+/* 20ch, not the artboard's 15ch. At 15ch the headline stacks to four lines and pushes the tour
+   down to y=706, leaving 194px of a 730px screenshot above a 900px fold — 27% of the thing the
+   page is actually selling. 20ch breaks it to two balanced lines and the carousel starts at 565,
+   so 335px shows. The 60px size and the +0.015em tracking are kept exactly as specified: the
+   measure was the cheaper thing to give up. */
 .hero-title{
   margin:18px 0 0;
   text-transform:uppercase;
   letter-spacing:0.015em;
   line-height:1.04;
-  max-width:15ch;
+  max-width:20ch;
 }
 .hero-lede{
   margin:26px 0 0;
@@ -316,6 +325,13 @@ header.site{
 .split-lead-body{margin:24px 0 0;color:var(--slate);}
 .terminal{
   margin:24px 0 0;
+  /* Two separate things, both needed. min-width:0 lets the box shrink inside its flex/grid parent
+     instead of forcing the column open to the width of a line that must not wrap — at 360px that
+     pushed the whole page into horizontal scroll. width:max-content stops the reverse problem:
+     a full-width box with the command ending well short of its right edge. */
+  min-width:0;
+  width:max-content;
+  max-width:100%;
   font-family:'Ubuntu Mono',monospace;
   font-size:0.875rem;
   line-height:1.7;
@@ -432,7 +448,7 @@ footer.site .wrap{
 
 /* ── Responsive ── */
 @media (max-width:1000px){
-  .split,.teaser{grid-template-columns:1fr;gap:48px;}
+  .split,.teaser{grid-template-columns:minmax(0,1fr);gap:48px;}
   .req{padding:32px 28px;}
   .req-grid{grid-template-columns:1fr;margin-top:24px;}
   .req-item{padding-right:0;padding-bottom:24px;}
@@ -487,7 +503,11 @@ footer.site .wrap{
   .carousel-counter{display:none;}
   .carousel-dots{order:-1;}
 
-  .terminal{font-size:0.78125rem;padding:14px;}
+  /* 12px, not 12.5: at 12.5 the line measures 331px of ink and needs 359 with its padding, which
+     is 9px more than a 390px phone can give it — so the command scrolled inside its own box on the
+     commonest screen there is. At 12px it fits. Below 390 it scrolls, which is honest for a command
+     line and no longer drags the page sideways with it. */
+  .terminal{font-size:0.75rem;padding:14px;}
   .point{padding:20px 0;}
 }
 

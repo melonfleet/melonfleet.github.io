@@ -118,13 +118,19 @@ melonfleet wordmark is always lowercase; the product is always `Flotilla`.
   Flotilla's identity and should lead the hero rather than the melonfleet wordmark.
 - `assets/melonfleet-wordmark.svg` — the maker's mark. Belongs in the header and footer, not the
   hero, on a page about one product.
-- `assets/shots/{dash,containers,logs,machines}.png` — 1440×940, captured from the running app,
-  window only, no drop shadow, light appearance. Real data, not mocked.
+- `assets/shots/{dash,containers,terminal,logs,machines}.png` — 1440×940, captured from the running
+  app, window only, no drop shadow, light appearance. Real data, not mocked.
 
 You may ask for more screenshots and they can be produced on request: dark appearance, the menu-bar
-popover, the card view, the collapsed icon rail, or a container terminal with output in it. **A
-terminal screenshot is the biggest gap** — a shell inside a running container is the app's most
-distinctive feature and the tour has no picture of it.
+popover, the card view, or the collapsed icon rail.
+
+The terminal shot that used to be the tour's biggest gap now exists, and it is third in the
+carousel: a shell inside the running `web` container showing nginx's version, a passing `nginx -t`,
+the master and worker process table, the actual server block, and a live `HTTP/1.1 200 OK` with
+headers. Everything in it is read-only and real. Worth knowing for next time: Flotilla's terminal
+view publishes **no accessibility information at all** — only its scrollbar — so it cannot be
+driven or verified through the accessibility tree, and it accepts typed characters as unicode
+strings but silently drops Return sent as a virtual keycode.
 
 ## Content — use this copy, do not invent claims
 
