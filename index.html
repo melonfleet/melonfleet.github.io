@@ -13,6 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Open+Sans:wght@400;600&family=Ubuntu+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<!-- Marks that scripting is available, before first paint. The carousel controls are hidden
+     without it: an arrow that does nothing is worse than no arrow. -->
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -32,110 +35,124 @@
 </div></header>
 
 <main id="main">
-  <section class="wrap hero hero-tour" id="tour">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <img class="hero-icon" src="/assets/icons/flotilla.svg" alt="" width="120" height="120">
-      <p class="eyebrow">Flotilla &middot; by melonfleet</p>
+
+  <section class="hero" id="tour">
+    <div class="wrap hero-head">
+      <img class="hero-icon" src="/assets/icons/flotilla.svg" alt="" width="88" height="88">
+      <p class="hero-eyebrow">Flotilla &middot; by melonfleet</p>
       <!-- Uppercased in CSS, not in the markup: the text stays sentence case for screen readers,
-           search results and the browser tab, and only the rendering is capitalised. Caps also need
-           letter-spacing and a smaller size to stay readable, which is why this is not simply the
-           old headline shouting. -->
+           search results and the browser tab, and only the rendering is capitalised. -->
       <h1 class="hero-title">Apple&rsquo;s containers, with a window.</h1>
-      <p class="lead hero-sub">Apple shipped <code>container</code> for macOS and left it on the command line. Flotilla is the native app on top: containers, images, volumes, networks and the virtual machines they run inside &mdash; plus a real terminal in every container. Free, no account, no telemetry.</p>
+      <p class="hero-lede">Apple shipped <code>container</code> for macOS and left it on the command line. Flotilla is the native app on top: containers, images, volumes, networks and the virtual machines they run inside &mdash; plus a real terminal in every container. Free, no account, no telemetry.</p>
+    </div>
+
+    <!-- The track is a scroll-snap strip, so with JavaScript disabled this is still a usable
+         swipeable, snapping gallery rather than a single frozen image. The buttons, dots and
+         counter below are an enhancement on top of it, not the mechanism. -->
     <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Screenshot tour">
-      <!-- The track is a scroll-snap strip, so with JavaScript disabled this is still a usable
-           swipeable/scrollable gallery rather than a single frozen image. The buttons and dots
-           below are an enhancement on top of it, not the mechanism. -->
-      <div class="carousel-track" data-track tabindex="0">
-      <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
-        <a class="shot-link" href="/assets/shots/dash.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/dash.png" alt="Flotilla's dashboard: host summary, a CPU and memory graph, disk and network throughput, and a per-container utilisation table." width="1440" height="940"></a>
-        <figcaption><strong>Dashboard.</strong> What the whole Mac is doing &mdash; pressure over five minutes, disk and network throughput, and every container's CPU, memory and I/O in one table.</figcaption>
-      </figure>
-      <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
-        <a class="shot-link" href="/assets/shots/containers.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/containers.png" alt="The containers list: name, image, published ports, live CPU and memory, IP address, and per-row actions." width="1440" height="940" loading="lazy"></a>
-        <figcaption><strong>Containers.</strong> Live CPU and memory per container, published ports, addresses, and start/stop/delete on the row. Switch to cards if you prefer.</figcaption>
-      </figure>
-      <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
-        <a class="shot-link" href="/assets/shots/logs.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/logs.png" alt="The aggregated log feed, with each line tagged by the container or machine it came from." width="1440" height="940" loading="lazy"></a>
-        <figcaption><strong>Logs.</strong> Every source in one feed, each line tagged with where it came from, filterable by name or text. No tab-hopping between containers.</figcaption>
-      </figure>
-      <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
-        <a class="shot-link" href="/assets/shots/machines.png" target="_blank" rel="noopener" title="Open full size"><img src="/assets/shots/machines.png" alt="The machines list: the virtual machines containers run inside, with CPUs, memory and IP address." width="1440" height="940" loading="lazy"></a>
-        <figcaption><strong>Machines.</strong> The virtual machines your containers actually run inside &mdash; create, resize, start, stop, and open a shell in one.</figcaption>
-      </figure>
+      <div class="carousel-track" data-track tabindex="0" role="group" aria-label="Screenshots, use the arrow keys to change">
+
+        <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+          <div class="shot"><img src="/assets/shots/dash.webp" width="1440" height="940" alt="Flotilla's dashboard: memory-pressure graph over five minutes, disk and network throughput charts, and a table of every running container with CPU, memory and I/O."></div>
+          <figcaption><strong>Dashboard.</strong> What the whole Mac is doing &mdash; pressure over five minutes, disk and network throughput, and every container&rsquo;s CPU, memory and I/O in one table.</figcaption>
+        </figure>
+
+        <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+          <div class="shot"><img src="/assets/shots/containers.webp" width="1440" height="940" loading="lazy" alt="Flotilla's container list: one row per container with live CPU and memory, published ports, IP address, and start, stop and delete controls."></div>
+          <figcaption><strong>Containers.</strong> Live CPU and memory per container, published ports, addresses, and start/stop/delete on the row. Switch to cards if you prefer.</figcaption>
+        </figure>
+
+        <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+          <div class="shot"><img src="/assets/shots/logs.webp" width="1440" height="940" loading="lazy" alt="Flotilla's log view: a single combined feed of log lines from several containers, each tagged with its source, above a filter field."></div>
+          <figcaption><strong>Logs.</strong> Every source in one feed, each line tagged with where it came from, filterable by name or text. No tab-hopping between containers.</figcaption>
+        </figure>
+
+        <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+          <div class="shot"><img src="/assets/shots/machines.webp" width="1440" height="940" loading="lazy" alt="Flotilla's machines view: the virtual machines containers run inside, with CPU and memory allocation and controls to create, resize, start, stop and open a shell."></div>
+          <figcaption><strong>Machines.</strong> The virtual machines your containers actually run inside &mdash; create, resize, start, stop, and open a shell in one.</figcaption>
+        </figure>
+
       </div>
+
       <div class="carousel-controls">
-        <button type="button" class="carousel-btn" data-prev aria-label="Previous screenshot">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button type="button" class="carousel-btn" data-prev aria-label="Previous screenshot"><span aria-hidden="true">&larr;</span></button>
         <div class="carousel-dots" data-dots>
-        <button type="button" class="dot" data-goto="0" aria-label="Go to screenshot 1" aria-current="true"></button>
-        <button type="button" class="dot" data-goto="1" aria-label="Go to screenshot 2"></button>
-        <button type="button" class="dot" data-goto="2" aria-label="Go to screenshot 3"></button>
-        <button type="button" class="dot" data-goto="3" aria-label="Go to screenshot 4"></button>
+          <button type="button" class="dot" data-goto="0" aria-label="Show the dashboard" aria-current="true"></button>
+          <button type="button" class="dot" data-goto="1" aria-label="Show the container list"></button>
+          <button type="button" class="dot" data-goto="2" aria-label="Show the log view"></button>
+          <button type="button" class="dot" data-goto="3" aria-label="Show the machines view"></button>
         </div>
-        <button type="button" class="carousel-btn" data-next aria-label="Next screenshot">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button type="button" class="carousel-btn" data-next aria-label="Next screenshot"><span aria-hidden="true">&rarr;</span></button>
+        <span class="carousel-counter" data-counter aria-hidden="true">01 / 04</span>
       </div>
     </div>
-      <div class="hero-actions hero-actions-centred">
+
+    <div class="wrap hero-foot">
+      <div class="hero-actions">
         <a class="btn btn-primary" href="#requirements">Requirements &amp; install</a>
         <a class="btn btn-ghost" href="/about.html">Why melonfleet</a>
       </div>
+      <p class="hero-status">Not released yet &middot; signed, notarised 0.9.0 in testing</p>
     </div>
   </section>
 
   <section class="wrap section" id="what">
-    <div class="section-head">
-      <h2>What it does</h2>
-      <p>Everything goes through Apple&rsquo;s own <code>container</code> CLI. Flotilla builds and validates every command before it runs, and shows you the exact one it used &mdash; nothing happens that you could not have typed yourself.</p>
-    </div>
-    <div class="steps">
-      <article class="step" style="--accent:var(--rind)">
-        <span class="step-num">01</span>
-        <h3>Run and watch</h3>
-        <p>Start, stop, restart and delete containers, with live CPU, memory, ports and addresses. Logs from every source in one feed you can filter.</p>
-      </article>
-      <article class="step" style="--accent:var(--stripe)">
-        <span class="step-num">02</span>
-        <h3>Shell straight in</h3>
-        <p>A real terminal inside any running container, and inside the virtual machines themselves. No <code>docker exec</code> incantation to remember.</p>
-      </article>
-      <article class="step" style="--accent:var(--flesh)">
-        <span class="step-num">03</span>
-        <h3>Everything else, too</h3>
-        <p>Images, volumes, networks and machines &mdash; build, pull, prune, create and inspect, from a menu-bar icon or a full window.</p>
-      </article>
+    <div class="split">
+      <div class="split-lead">
+        <p class="eyebrow">What it does</p>
+        <h2>Everything goes through Apple&rsquo;s own <code class="code-accent">container</code> CLI.</h2>
+        <p class="split-lead-body">Flotilla shows the exact command it used, so nothing happens that you could not have typed yourself.</p>
+        <p class="terminal"><span class="terminal-prompt" aria-hidden="true">$</span> container run -d --name api -p 8080:80 nginx:latest</p>
+      </div>
+      <div class="points">
+        <div class="point">
+          <h3>Run and watch</h3>
+          <p>Start, stop and delete containers, and see live stats and logs while they run.</p>
+        </div>
+        <div class="point">
+          <h3>Shell straight in</h3>
+          <p>A real terminal in any container or machine, without leaving the window.</p>
+        </div>
+        <div class="point">
+          <h3>Everything else too</h3>
+          <p>Images, volumes, networks and the virtual machines your containers run inside.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="wrap section" id="requirements">
-    <div class="section-head">
-      <h2>Requirements</h2>
-      <p>Two things, and Flotilla tells you plainly when either is missing rather than showing you an empty list.</p>
+    <div class="req">
+      <div class="req-head">
+        <p class="eyebrow">Requirements &amp; install</p>
+        <h2>Two things, and nothing else.</h2>
+      </div>
+      <div class="req-grid">
+        <div class="req-item">
+          <span class="req-num" aria-hidden="true">01</span>
+          <h3>macOS 26 or later</h3>
+          <p>On Apple silicon.</p>
+        </div>
+        <div class="req-item">
+          <span class="req-num" aria-hidden="true">02</span>
+          <h3>Apple&rsquo;s <code>container</code> CLI</h3>
+          <p>Installed separately from <a class="mono-link" href="https://github.com/apple/container" target="_blank" rel="noopener">apple/container</a>. Flotilla drives that tool; it does not bundle or replace it.</p>
+        </div>
+        <div class="req-item">
+          <span class="req-num" aria-hidden="true">03</span>
+          <h3>Nothing else</h3>
+          <p>No account, no telemetry. Signed with a Developer ID and notarised by Apple.</p>
+        </div>
+      </div>
+      <!-- Why there is no download button. A page that simply omitted it would read as an oversight;
+           saying what has to be true first is the honest version. -->
+      <p class="req-note">Flotilla is not released yet. There is a signed, notarised <span class="mono">0.9.0</span> for testing; 1.0 follows. A download link appears here when the repository is public and a release exists.</p>
     </div>
-    <div class="grid">
-      <article class="card">
-        <h3>macOS 26 or later</h3>
-        <p>On Apple silicon. Apple&rsquo;s container runtime needs both, so Flotilla does too.</p>
-        <div class="card-meta"><span class="badge badge-native">Native app</span></div>
-      </article>
-      <article class="card">
-        <h3>Apple&rsquo;s <code>container</code> CLI</h3>
-        <p>Install it from <a href="https://github.com/apple/container" target="_blank" rel="noopener">apple/container</a>. Flotilla drives that tool &mdash; it does not bundle or replace it, and it starts the runtime for you if the service is not running.</p>
-        <div class="card-meta"><span class="badge badge-built">Free</span></div>
-      </article>
-      <article class="card">
-        <h3>Nothing else</h3>
-        <p>No account, no sign-in, no telemetry, no subscription. Signed and notarised by Apple, so it opens without a Gatekeeper argument.</p>
-        <div class="card-meta"><span class="badge badge-built">Free</span></div>
-      </article>
-    </div>
+  </section>
 
-    <div class="suite-strip">
-      <h2>More fruit on the way</h2>
+  <section class="wrap section">
+    <div class="teaser">
+      <h2>More fruit on the way.</h2>
       <p>Flotilla is the first thing melonfleet has put out. There is more growing &mdash; quietly, and only announced when it is actually finished. Nothing to sign up for.</p>
     </div>
   </section>
@@ -145,111 +162,119 @@
 <footer class="site"><div class="wrap">
   <div class="footer-brand">
     <img src="/assets/melonfleet-wordmark.svg" alt="" width="376" height="100" aria-hidden="true">
-    <span>© 2026 melonfleet · a hobby, made for fun</span>
+    <span>© 2026 melonfleet · a hobby, made for fun · no cookies, no analytics</span>
   </div>
   <nav class="footer-links" aria-label="Footer">
     <a href="/about.html">About</a>
     <a href="https://github.com/melonfleet" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/apple/container" target="_blank" rel="noopener">apple/container</a>
     <a href="mailto:hello@melonfleet.dev">hello@melonfleet.dev</a>
   </nav>
 </div></footer>
 <script>
+/* Screenshot tour.
+   Deliberately thin: the scroll-snap track is the mechanism. With this script removed the tour is
+   still a snapping, swipeable strip — the buttons, dots and counter are an enhancement on top.
+
+   Three things here look like paranoia and are not; each one is a bug that already happened.
+   1. Programmatic moves use behavior:'instant'. A smooth scrollTo on a container with
+      scroll-snap-type: x mandatory silently did nothing on the engine this was built against —
+      scrollLeft stayed put through scrollLeft assignment, scrollBy and smooth scrollTo alike.
+   2. The landing is verified and forced, rather than assumed.
+   3. Which slide is showing is *read back from the scroll position*, never counted, and the
+      controls report their own result instead of waiting for a scroll event — scroll events do not
+      fire reliably for programmatic scrolls, which left the dots on slide one for ever. The poll
+      is the backstop for touch and trackpad scrolls; setInterval rather than requestAnimationFrame
+      because browsers pause rAF on hidden pages, and the controls then go stale. */
 (function () {
-  // Carousel behaviour. Deliberately thin: the scroll-snap track is the mechanism, so this only
-  // moves the scroll position and reflects it in the controls. Nothing here is required for the
-  // gallery to work — with this script removed it is still a snapping, swipeable strip.
   document.querySelectorAll('[data-carousel]').forEach(function (root) {
     var track = root.querySelector('[data-track]');
+    if (!track) return;
     var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
     var dots = Array.prototype.slice.call(root.querySelectorAll('.dot'));
+    var counter = root.querySelector('[data-counter]');
     var prev = root.querySelector('[data-prev]');
     var next = root.querySelector('[data-next]');
-    if (!track || !slides.length) return;
+    if (!slides.length) return;
 
-    // Which slide is showing is *read from the scroll position*, never counted. A counter drifts
-    // the moment someone swipes or scrolls the track directly, and then the dots lie.
+    var shown = -1;
+
+    function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+    // Load the slide being shown and the ones either side of it.
+    //
+    // loading="lazy" is the right default and is what a reader with no JavaScript gets, but it does
+    // not survive this carousel on its own: after a programmatic scroll of the track, the last
+    // slide sits fully inside the viewport — measured at 1116x728 with the page at rest — and the
+    // browser still never fetches it. The reader clicks through to the machines shot and gets an
+    // empty white frame. So the control that moved the track is also responsible for the picture
+    // arriving, rather than trusting an observer that has already been watched not to fire.
+    function preload(i) {
+      // Clamped, not wrapped: wrapping here would pull the last screenshot on first paint and
+      // undo the point of lazy-loading them at all.
+      [i - 1, i, i + 1].forEach(function (n) {
+        if (n < 0 || n >= slides.length) return;
+        var img = slides[n].querySelector('img');
+        if (img && img.loading === 'lazy') img.loading = 'eager';
+      });
+    }
+
     function currentIndex() {
       var mid = track.scrollLeft + track.clientWidth / 2;
       var best = 0, bestDist = Infinity;
       slides.forEach(function (s, i) {
-        var c = s.offsetLeft + s.offsetWidth / 2;
-        var d = Math.abs(c - mid);
+        var d = Math.abs((s.offsetLeft + s.offsetWidth / 2) - mid);
         if (d < bestDist) { bestDist = d; best = i; }
       });
       return best;
     }
 
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function goTo(i) {
-      var clamped = Math.max(0, Math.min(slides.length - 1, i));
-      var target = slides[clamped];
-      // scrollTo on the track, not scrollIntoView on the slide: the latter also scrolls the *page*
-      // to bring the carousel into view, which yanks the reader around when they click an arrow.
-      var left = target.offsetLeft - track.offsetLeft;
-      track.scrollTo({ left: left, behavior: reduce ? 'instant' : 'smooth' });
-
-      // Then check it actually moved, and force it if not.
-      //
-      // Not paranoia: on the engine this was built against, a smooth `scrollTo` on a container with
-      // `scroll-snap-type: x mandatory` silently did nothing — scrollLeft stayed at 0 through
-      // scrollLeft assignment, scrollBy and smooth scrollTo alike, while `behavior: 'instant'`
-      // landed every time. So the carousel looked completely dead while every measurement said the
-      // layout was correct. Smooth is still attempted, because where it works it is nicer; this
-      // just refuses to let the animation be load-bearing.
-      // Update the controls from our own action rather than waiting to be told.
-      //
-      // The dots and arrows were driven only by the track's `scroll` event, and that event does not
-      // always arrive: measured here, `scrollLeft` went 1000 → 2000 with **zero** scroll events
-      // dispatched, so `sync` never ran and the dots sat on the first slide however far you paged.
-      // The scroll listener stays for swipes and trackpad scrolling, where it does fire; this makes
-      // button and dot presses self-reporting instead of hoping for an event.
-      window.setTimeout(function () {
-        if (!reduce && Math.abs(track.scrollLeft - left) > 4) {
-          track.scrollTo({ left: left, behavior: 'instant' });
-        }
-        sync();
-      }, 420);
+    function sync() {
+      if (!track.clientWidth) return;
+      var i = currentIndex();
+      if (i === shown) return;
+      shown = i;
+      dots.forEach(function (d, n) {
+        if (n === i) d.setAttribute('aria-current', 'true');
+        else d.removeAttribute('aria-current');
+      });
+      if (counter) counter.textContent = pad(i + 1) + ' / ' + pad(slides.length);
     }
 
-    function sync() {
-      var i = currentIndex();
-      dots.forEach(function (d, n) {
-        if (n === i) { d.setAttribute('aria-current', 'true'); }
-        else { d.removeAttribute('aria-current'); }
-      });
-      // Disabled at the ends rather than wrapping. A tour has a first and last screen; silently
-      // looping makes it impossible to tell you have seen all of it.
-      var atStart = track.scrollLeft <= 2;
-      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
-      if (prev) prev.disabled = atStart;
-      if (next) next.disabled = atEnd;
+    function goTo(i) {
+      var n = slides.length;
+      var idx = ((i % n) + n) % n;           // wraps, so neither arrow is ever a dead control
+      // scrollTo on the track, not scrollIntoView on the slide: the latter also scrolls the page
+      // to bring the carousel into view, which yanks the reader around when they click an arrow.
+      var left = slides[idx].offsetLeft - track.offsetLeft;
+      try { track.scrollTo({ left: left, behavior: 'instant' }); }
+      catch (e) { track.scrollLeft = left; }
+      if (Math.abs(track.scrollLeft - left) > 2) track.scrollLeft = left;
+      preload(idx);
+      sync();
+      window.setTimeout(sync, 120);
     }
 
     if (prev) prev.addEventListener('click', function () { goTo(currentIndex() - 1); });
     if (next) next.addEventListener('click', function () { goTo(currentIndex() + 1); });
     dots.forEach(function (d) {
-      d.addEventListener('click', function () { goTo(parseInt(d.dataset.goto, 10)); });
+      d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-goto'), 10) || 0); });
     });
 
+    track.addEventListener('scroll', sync, { passive: true });
     track.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIndex() + 1); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIndex() - 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIndex() - 1); }
     });
 
-    // Called straight from the scroll event, with no requestAnimationFrame throttle.
-    //
-    // The throttled version looked sensible and was wrong: browsers pause rAF on a hidden page, so
-    // the dots and the arrow disabled-states silently stopped tracking the scroll position whenever
-    // the page was not visible — and then showed stale state on return. `sync` reads four dots, two
-    // buttons and four slide offsets; throttling that is optimising the wrong thing.
-    track.addEventListener('scroll', sync, { passive: true });
-    // Two slides fit side by side above 1040px, so the end position changes with the viewport.
     window.addEventListener('resize', sync);
+    window.setInterval(sync, 250);
     sync();
+    preload(currentIndex());
   });
 })();
 
+/* Mobile navigation. */
 (function () {
   var btn = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');
@@ -277,9 +302,7 @@
     }
   });
 
-  function onViewportChange() {
-    if (!mq.matches) setOpen(false);
-  }
+  function onViewportChange() { if (!mq.matches) setOpen(false); }
   if (mq.addEventListener) mq.addEventListener('change', onViewportChange);
   else if (mq.addListener) mq.addListener(onViewportChange);
 })();

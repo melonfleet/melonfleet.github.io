@@ -198,6 +198,18 @@ If you produce code as well as design, these cost real time to find:
   pages, so the controls go stale and then show the wrong slide on return.
 - Give the caption a `min-height`, or the whole section changes height as you page between captions
   of different lengths.
+- `loading="lazy"` is close to a no-op on a horizontal carousel, and worse than a no-op if you
+  trust it. Every slide shares the same vertical band, so the browser fetches them all on first
+  paint anyway — and after a programmatic scroll of the track it does *not* re-evaluate, so the
+  last slide can sit fully in the viewport, measured at 1116x731, and never load at all. The
+  reader clicks to the final screenshot and gets an empty frame. Keep the attribute for the
+  no-JavaScript case, but have the control that moves the track load the neighbouring slides
+  itself. Lossless WebP is where the actual saving is: 1451 KB of PNG becomes 632 KB, pixel for
+  pixel identical.
+- Check contrast on the controls, not just the text. The inactive carousel dot at `stone #C7BFB2`
+  on `cream` measures 1.71:1, well under the 3:1 WCAG asks of a user-interface component; `slate`
+  is 5.23:1 and still reads as secondary, because the active dot is separated by width as well as
+  colour.
 - An undefined `var(--token)` or a class with no rule fails silently — CSS does not error, it just
   renders unstyled. `scripts/check-css-tokens.sh` in the repo catches both; keep it passing.
 

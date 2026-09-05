@@ -1,12 +1,18 @@
+/* melonfleet.dev
+   Type scale and spacing rhythm from the launch-page design (artboard 1d):
+   4px base; steps 8 · 12 · 18 · 24 · 32 · 44 · 64 · 112. Section gap 112 desktop, 64 mobile.
+   Gutter 64 / 20. Content column 1120. */
+
 :root{
   --rind:#1B5E20; --stripe:#7CB342; --flesh:#FC4A6B; --flesh-deep:#E63956;
   --cantaloupe:#EE7B4D; --honeydew:#A7D98C; --canary:#F2C94C;
   --seed:#241F1A; --cream:#FBF7F0; --sand:#EDE6DA; --stone:#C7BFB2; --slate:#6E675C;
   --pith:#FFFFFF;
   --success:#1D9E75; --warning:#E5A100; --danger:#C9302C; --info:#2C7A7B;
-  /* Page shell — padding never drops below 20px */
-  --page-max:1080px;
-  --page-pad:clamp(20px, 4.5vw, 40px);
+
+  --content:1120px;
+  --page-pad:clamp(20px, 5vw, 64px);
+  --section-gap:clamp(64px, 8vw, 112px);
   --nav-bp:720px;
   --radius:14px;
   --radius-lg:18px;
@@ -21,24 +27,20 @@ body{
   background:var(--cream);
   color:var(--seed);
   font-family:'Open Sans',system-ui,sans-serif;
+  font-size:clamp(1rem, 0.4vw + 0.9rem, 1.0625rem);
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
-  /* Soft page atmosphere without clipping as a layout fix */
-  background-image:
-    radial-gradient(ellipse 90% 50% at 100% -10%, rgba(252,74,107,0.06), transparent 50%),
-    radial-gradient(ellipse 70% 40% at 0% 0%, rgba(124,179,66,0.08), transparent 45%);
-  background-attachment:fixed;
 }
 img{max-width:100%;height:auto;display:block;}
 
-/* Centered content column — used by header, hero, sections, footer */
+/* Centred content column — header, sections, footer */
 .wrap{
   width:100%;
-  max-width:var(--page-max);
+  max-width:calc(var(--content) + var(--page-pad) * 2);
   margin-inline:auto;
   padding-inline:var(--page-pad);
 }
-.wrap-narrow{max-width:720px;}
+.wrap-narrow{--content:720px;}
 
 a{color:var(--flesh-deep);text-decoration:none;}
 a:hover{text-decoration:underline;}
@@ -53,26 +55,37 @@ button:focus-visible,
 h1,h2,h3{
   font-family:'Ubuntu',sans-serif;
   font-weight:500;
-  line-height:1.2;
   color:var(--seed);
-  text-wrap:balance;
+  text-wrap:pretty;
 }
-h1{font-size:clamp(1.75rem, 4.5vw, 2.5rem);font-weight:700;margin:0 0 16px;letter-spacing:-0.02em;}
-h2{font-size:clamp(1.35rem, 3vw, 1.75rem);margin:0 0 0.5em;letter-spacing:-0.015em;}
-h3{font-size:1.125rem;margin:0 0 6px;}
+h1{font-size:clamp(1.9375rem, 4.2vw, 3.75rem);font-weight:700;line-height:1.04;letter-spacing:-0.015em;margin:0 0 16px;}
+h2{font-size:clamp(1.4375rem, 2.4vw, 2.125rem);line-height:1.2;letter-spacing:-0.015em;margin:0 0 0.5em;}
+h3{font-size:clamp(1.0625rem, 1.4vw, 1.25rem);line-height:1.3;letter-spacing:-0.01em;margin:0 0 6px;}
 p{margin:0 0 1.1em;}
-.lead{font-size:clamp(1.05rem, 2.2vw, 1.25rem);color:var(--slate);max-width:56ch;line-height:1.7;}
+.lead{font-size:clamp(1.05rem, 2.2vw, 1.1875rem);color:var(--slate);max-width:64ch;line-height:1.6;}
 .muted{color:var(--slate);}
-.section{padding-block:64px 12px;}
-.section-head{margin-bottom:32px;}
-.section-head p{margin:0;max-width:58ch;color:var(--slate);}
-code{
+code,.mono{
   font-family:'Ubuntu Mono',monospace;
-  font-size:0.88em;
+  font-size:0.9em;
   background:var(--sand);
-  padding:2px 6px;
-  border-radius:5px;
+  padding:1px 6px;
+  border-radius:4px;
 }
+.mono{background:transparent;padding:0;color:var(--seed);}
+.code-accent{color:var(--rind);background:transparent;padding:0;font-size:0.88em;}
+.mono-link{font-family:'Ubuntu Mono',monospace;font-size:0.92em;}
+
+/* Section eyebrow — mono, tracked, uppercase. */
+.eyebrow{
+  margin:0 0 12px;
+  font-family:'Ubuntu Mono',monospace;
+  font-size:0.8125rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--slate);
+}
+
+.section{padding-block:var(--section-gap) 0;}
 
 /* Skip link */
 .skip-link{
@@ -99,8 +112,7 @@ header.site{
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  min-height:60px;
-  padding-block:12px;
+  min-height:68px;
 }
 .nav .brand{display:inline-flex;align-items:center;flex-shrink:0;z-index:2;}
 .nav .brand img{height:26px;width:auto;max-width:min(100%,168px);}
@@ -124,18 +136,12 @@ header.site{
   transition:border-color .15s ease, background .15s ease;
 }
 .nav-toggle:hover{border-color:var(--rind);background:rgba(27,94,32,0.04);}
-.nav-toggle-bars{
-  display:block;
-  width:18px;height:12px;
-  position:relative;
-}
+.nav-toggle-bars{display:block;width:18px;height:12px;position:relative;}
 .nav-toggle-bars::before,
 .nav-toggle-bars::after,
 .nav-toggle-bars span{
   position:absolute;left:0;right:0;
-  height:2px;
-  background:currentColor;
-  border-radius:1px;
+  height:2px;background:currentColor;border-radius:1px;
   transition:transform .2s var(--ease), top .2s var(--ease), opacity .15s ease;
 }
 .nav-toggle-bars::before{content:"";top:0;}
@@ -146,417 +152,356 @@ header.site{
 .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after{top:5px;transform:rotate(-45deg);}
 
 .nav-links{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:flex-end;
-  gap:4px 4px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;
+  gap:0 20px;
 }
 .nav-links a{
   color:var(--slate);
-  font-family:'Ubuntu',sans-serif;
-  font-weight:500;
-  font-size:15px;
-  padding:8px 12px;
-  border-radius:8px;
+  font-family:'Open Sans',sans-serif;
+  font-size:0.9375rem;
   min-height:44px;
-  display:inline-flex;
-  align-items:center;
-  transition:color .15s ease, background .15s ease;
+  display:inline-flex;align-items:center;
+  transition:color .15s ease;
 }
 .nav-links a:hover,
-.nav-links a[aria-current="page"]{
-  color:var(--rind);
-  text-decoration:none;
-  background:rgba(27,94,32,0.06);
-}
+.nav-links a[aria-current="page"]{color:var(--seed);text-decoration:none;}
 
 .wordmark{height:56px;width:auto;max-width:100%;margin:6px 0 8px;}
 
-/* ── Hero ── */
-.hero{
-  padding-block:72px 36px;   /* vertical only — keep .wrap's padding-inline */
-  position:relative;
+/* ── Hero ──
+   Rhythm: icon → 22 → eyebrow → 18 → headline → 26 → lede → 40 → carousel → 44 → buttons. */
+.hero{padding-block:48px 0;}
+.hero-head{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.hero-icon{height:88px;width:88px;margin:0;}
+.hero-eyebrow{
+  margin:22px 0 0;
+  font-family:'Ubuntu Mono',monospace;
+  font-size:0.875rem;
+  letter-spacing:0.1em;
+  color:var(--slate);
 }
-.hero-inner{position:relative;z-index:1;}
-.hero-glow{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  /* Contained glow — no negative insets, no overflow */
-  background:
-    radial-gradient(ellipse 65% 55% at 88% 18%, rgba(252,74,107,0.13), transparent 62%),
-    radial-gradient(ellipse 50% 45% at 8% 78%, rgba(124,179,66,0.14), transparent 58%),
-    linear-gradient(180deg, rgba(237,230,218,0.5), transparent 72%);
-  border-radius:0 0 24px 24px;
+/* The headline, capitalised in rendering only.
+   Caps need three adjustments or they just shout: extra letter-spacing (capitals set tighter than
+   lowercase at the same tracking), a smaller size than the equivalent sentence-case h1 (60 rather
+   than ~72, since caps occupy the full cap-height), and a tighter line-height. */
+.hero-title{
+  margin:18px 0 0;
+  text-transform:uppercase;
+  letter-spacing:0.015em;
+  line-height:1.04;
+  max-width:15ch;
 }
-.hero-brand{height:clamp(48px, 9vw, 68px);width:auto;max-width:100%;margin-bottom:28px;}
-/* The product's app icon in the hero. Squircle icons already carry their own padding, so this is
-   sized to sit optically level with the headline rather than to a nominal box. */
-.hero-icon{height:clamp(72px, 11vw, 104px);width:auto;margin-bottom:18px;display:block;}
-/* Product name above the headline, since the wordmark above it says "melonfleet" and the
-   product is Flotilla — without this the hero reads as though melonfleet is the app. */
-.eyebrow{
-  margin:0 0 10px;font-family:'Ubuntu',sans-serif;font-weight:700;
-  letter-spacing:0.08em;text-transform:uppercase;font-size:0.8rem;color:var(--flesh-deep);
+.hero-lede{
+  margin:26px 0 0;
+  font-size:clamp(1rem, 1.1vw + 0.65rem, 1.1875rem);
+  line-height:1.6;
+  color:var(--slate);
+  max-width:64ch;
 }
-.hero h1{max-width:18ch;}
-.hero .lead{margin-bottom:28px;}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px;}
+.hero-foot{display:flex;flex-direction:column;align-items:center;}
+.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:44px;}
+.hero-status{
+  margin:18px 0 0;
+  font-family:'Ubuntu Mono',monospace;
+  font-size:0.8125rem;
+  color:var(--slate);
+  text-align:center;
+}
 
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font-family:'Ubuntu',sans-serif;font-weight:500;font-size:15px;
-  min-height:44px;
-  padding:12px 20px;border-radius:11px;
+  font-family:'Open Sans',sans-serif;font-weight:600;font-size:1rem;
+  min-height:48px;
+  padding:14px 28px;border-radius:10px;
   border:1px solid transparent;text-decoration:none;
-  transition:background .18s ease, color .18s ease, border-color .18s ease,
-    transform .18s var(--ease), box-shadow .18s ease;
+  transition:background .18s ease, color .18s ease, border-color .18s ease;
 }
-.btn:hover{text-decoration:none;transform:translateY(-1px);}
-.btn:active{transform:translateY(0);}
-.btn-primary{
-  background:var(--rind);color:#fff;
-  box-shadow:0 1px 0 rgba(255,255,255,0.12) inset, var(--shadow-sm);
-}
-.btn-primary:hover{background:#164e1a;color:#fff;box-shadow:var(--shadow-md);}
-.btn-ghost{background:transparent;color:var(--rind);border-color:var(--stone);}
-.btn-ghost:hover{border-color:var(--rind);color:var(--rind);background:rgba(27,94,32,0.05);}
+.btn:hover{text-decoration:none;}
+.btn-primary{background:var(--rind);color:var(--cream);}
+.btn-primary:hover{background:#164A19;color:var(--cream);}
+.btn-ghost{background:transparent;color:var(--seed);border-color:var(--stone);}
+.btn-ghost:hover{border-color:var(--seed);color:var(--seed);}
 
-/* ── How it works ── */
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-  margin-top:8px;
+/* ── Screenshot tour ──
+   Built on scroll-snap rather than transforms. Three reasons: with JavaScript off it is still a
+   scrollable, snapping gallery instead of one frozen image; a trackpad swipe and a touch drag work
+   for free, which a transform carousel has to reimplement badly; and the browser keeps track of
+   which slide is showing, so the dots are derived from real scroll position rather than from a
+   counter that drifts out of sync with what is on screen. */
+.carousel{
+  margin-top:40px;
+  width:100%;
+  max-width:calc(var(--content) + var(--page-pad) * 2);
+  margin-inline:auto;
+  padding-inline:var(--page-pad);
 }
-.step{
+.carousel-track{
+  display:flex;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+}
+/* The scrollbar is noise once the dots, arrows and counter say where you are — but those only
+   exist when the script runs, so without it the scrollbar stays as the visible affordance. */
+.js .carousel-track{scrollbar-width:none;}
+.js .carousel-track::-webkit-scrollbar{display:none;}
+.carousel-track:focus-visible{outline:2px solid var(--rind);outline-offset:4px;border-radius:12px;}
+
+.slide{
+  margin:0;
+  flex:0 0 100%;
+  scroll-snap-align:start;
+  /* Padding rather than gap: a gap on a snapping track leaves a sliver of the neighbour visible at
+     rest, which reads as a rendering fault rather than a hint. */
+  padding:0 1px;
+  display:flex;flex-direction:column;gap:20px;
+}
+.shot{
+  width:100%;
+  aspect-ratio:1440 / 940;
+  background:var(--pith);
+  border:1px solid var(--stone);
+  border-radius:12px;
+  overflow:hidden;
+}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:left top;}
+.slide figcaption{
+  margin:0 auto;
+  max-width:78ch;
+  text-align:center;
+  font-size:1rem;
+  line-height:1.6;
+  color:var(--slate);
+  /* Reserves room for the longest caption so the section does not change height between slides. */
+  min-height:52px;
+}
+.slide figcaption strong{
+  font-family:'Ubuntu',sans-serif;font-weight:500;font-size:1.0625rem;color:var(--seed);
+}
+
+/* Hidden until the script that drives them has run: an arrow that does nothing is worse than no
+   arrow, and the scroll-snap strip is still swipeable and scrollable on its own. */
+.carousel-controls{display:none;align-items:center;justify-content:center;gap:24px;margin-top:20px;}
+.js .carousel-controls{display:flex;}
+.carousel-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;padding:0;
+  border:1px solid var(--stone);border-radius:99px;
+  background:var(--pith);color:var(--seed);
+  font-family:'Ubuntu Mono',monospace;font-size:15px;line-height:1;
+  cursor:pointer;transition:border-color .15s ease, color .15s ease;
+}
+.carousel-btn:hover{border-color:var(--rind);color:var(--rind);}
+.carousel-dots{display:flex;align-items:center;gap:8px;}
+/* Inactive dots are slate, not stone. Stone on cream measures 1.71:1 — below the 3:1 WCAG asks
+   of a user-interface component, so the dot would be a control you cannot reliably see. Slate is
+   5.23:1 and still reads as secondary, because the active dot is separated by width as well as
+   colour rather than by colour alone. */
+.dot{
+  width:8px;height:8px;padding:0;border:none;border-radius:99px;
+  background:var(--slate);cursor:pointer;
+  transition:width .12s cubic-bezier(0.2,0,0,1), background .12s ease;
+}
+.dot:hover{background:var(--seed);}
+.dot[aria-current="true"]{width:26px;background:var(--rind);}
+.carousel-counter{
+  font-family:'Ubuntu Mono',monospace;font-size:0.8125rem;letter-spacing:0.08em;
+  color:var(--slate);margin-left:8px;
+}
+
+/* ── What it does ── */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:80px;align-items:start;}
+.split-lead{display:flex;flex-direction:column;}
+.split-lead h2{margin:0;}
+.split-lead-body{margin:24px 0 0;color:var(--slate);}
+.terminal{
+  margin:24px 0 0;
+  font-family:'Ubuntu Mono',monospace;
+  font-size:0.875rem;
+  line-height:1.7;
+  color:var(--cream);
+  background:var(--seed);
+  border-radius:10px;
+  padding:16px 18px;
+  overflow-x:auto;
+  white-space:nowrap;
+}
+.terminal-prompt{color:var(--stripe);}
+.points{display:flex;flex-direction:column;}
+.point{padding:28px 0;}
+.point:first-child{padding-top:0;}
+.point + .point{border-top:1px solid var(--sand);}
+.point:last-child{padding-bottom:0;}
+.point h3{margin:0 0 8px;}
+.point p{margin:0;color:var(--slate);}
+
+/* ── Requirements ── */
+.req{
   background:var(--pith);
   border:1px solid var(--sand);
-  border-radius:var(--radius);
-  padding:24px 22px;
-  position:relative;
-  overflow:hidden;
-  box-shadow:var(--shadow-sm);
-  transition:border-color .2s ease, box-shadow .25s var(--ease), transform .25s var(--ease);
+  border-radius:16px;
+  padding:48px 52px;
 }
-.step:hover{
-  border-color:var(--stone);
-  box-shadow:var(--shadow-md);
-  transform:translateY(-2px);
+.req-head h2{margin:0;}
+.req-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:32px;}
+.req-item{display:flex;flex-direction:column;gap:10px;padding-right:36px;}
+.req-item + .req-item{border-left:1px solid var(--sand);padding-left:36px;}
+.req-item:last-child{padding-right:0;}
+.req-num{font-family:'Ubuntu Mono',monospace;font-size:0.8125rem;color:var(--rind);}
+.req-item h3{margin:0;}
+.req-item p{margin:0;color:var(--slate);font-size:1rem;}
+.req-note{
+  margin:32px 0 0;
+  padding-top:24px;
+  border-top:1px solid var(--sand);
+  font-size:0.9375rem;
+  line-height:1.6;
+  color:var(--slate);
 }
-.step::after{
-  content:"";
-  position:absolute;left:0;top:0;bottom:0;width:4px;
-  background:var(--accent,var(--rind));
-}
-.step-num{
-  font-family:'Ubuntu Mono',monospace;font-size:12px;color:var(--rind);
-  letter-spacing:0.06em;display:block;margin-bottom:12px;
-}
-.step h3{font-size:1.05rem;}
-.step p{margin:0;color:var(--slate);font-size:0.95rem;}
 
-/* ── Product grid ── */
-.grid{
+/* ── Teaser ── */
+.teaser{
+  border-top:1px solid var(--sand);
+  padding-top:48px;
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-  margin:8px 0 0;
+  grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);
+  gap:80px;
+  align-items:start;
 }
+.teaser h2{margin:0;}
+.teaser p{margin:0;color:var(--slate);max-width:62ch;}
+
+/* ── Cards and grids — the brand page ── */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:8px 0 0;}
 .card{
   background:var(--pith);
   border:1px solid var(--sand);
   border-radius:var(--radius-lg);
   padding:22px;
   display:flex;flex-direction:column;gap:12px;
-  min-height:100%;
-  min-width:0; /* prevent grid blowout */
+  min-height:100%;min-width:0;
   box-shadow:var(--shadow-sm);
-  transition:border-color .2s ease, box-shadow .25s var(--ease), transform .25s var(--ease);
+  transition:border-color .2s ease, box-shadow .25s var(--ease);
 }
-.card:hover{
-  border-color:var(--stripe);
-  box-shadow:var(--shadow-md);
-  transform:translateY(-3px);
-}
-.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
-.card-icon{
-  width:52px;height:52px;max-width:52px;
-  border-radius:12px;flex-shrink:0;
-  transition:transform .25s var(--ease);
-}
-.card:hover .card-icon{transform:scale(1.04);}
-.card h3{margin:0;font-size:1.125rem;}
-.card p{margin:0;color:var(--slate);font-size:0.92rem;flex:1;line-height:1.6;}
-.card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:4px;}
-.badge{
-  font-family:'Ubuntu Mono',monospace;font-size:11px;
-  padding:4px 10px;border-radius:999px;
-  border:1px solid transparent;white-space:nowrap;
-}
-.badge-built{color:#0f6b4c;background:#E6F6EF;border-color:#C6EBD9;}
-.badge-planned{color:var(--rind);background:#EAF3DE;border-color:#D5E8BE;}
-.badge-replat{color:#8a5a00;background:#FFF4D6;border-color:#F5E0A0;}
-.badge-native{color:#1f5556;background:#E6F3F3;border-color:#C5E0E1;}
-.group-label{
-  font-family:'Ubuntu',sans-serif;font-weight:500;font-size:13px;color:var(--slate);
-  letter-spacing:0.06em;text-transform:uppercase;
-  margin:36px 0 14px;
-  padding-bottom:8px;
-  border-bottom:1px solid var(--sand);
-}
-.group-label:first-of-type{margin-top:8px;}
+.card:hover{border-color:var(--stone);box-shadow:var(--shadow-md);}
+.card-icon{width:52px;height:52px;max-width:52px;border-radius:12px;flex-shrink:0;}
+.card h3{margin:0;}
+.card p{margin:0;color:var(--slate);font-size:0.95rem;flex:1;line-height:1.6;}
+.icon-card{align-items:center;text-align:center;padding:18px;}
+.icon-card .card-icon{margin-inline:auto;}
+.icon-card h3{font-size:1rem;}
 
-/* ── Suite strip ── */
-.suite-strip{
-  margin-top:48px;
-  padding:28px 28px;
-  border-radius:var(--radius-lg);
-  background:
-    linear-gradient(135deg, rgba(27,94,32,0.07), rgba(252,74,107,0.06));
-  border:1px solid var(--sand);
-}
-.suite-strip h2{font-size:1.25rem;margin:0 0 10px;}
-.suite-strip p{margin:0;color:var(--slate);font-size:0.95rem;max-width:70ch;}
-.stack-list{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none;}
-.stack-list li{
-  font-family:'Ubuntu Mono',monospace;font-size:12px;color:var(--seed);
-  background:var(--pith);border:1px solid var(--sand);
-  padding:6px 12px;border-radius:8px;
-}
-
-/* ── Brand page ── */
 .swatches{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0 8px;}
 .sw{width:64px;}
 .sw i{display:block;height:48px;border-radius:10px;border:0.5px solid var(--sand);box-shadow:var(--shadow-sm);}
 .sw span{font-family:'Ubuntu Mono',monospace;font-size:10px;color:var(--slate);display:block;margin-top:6px;line-height:1.3;}
 
-.name-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px 16px;
-  margin:16px 0 8px;padding:0;list-style:none;
-}
+.name-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;margin:16px 0 8px;padding:0;list-style:none;}
 .name-grid li{
   background:var(--pith);border:1px solid var(--sand);
-  border-radius:12px;padding:16px 18px;
-  min-width:0;
+  border-radius:12px;padding:16px 18px;min-width:0;
   transition:border-color .2s ease, box-shadow .2s ease;
 }
 .name-grid li:hover{border-color:var(--stone);box-shadow:var(--shadow-sm);}
 .name-grid strong{display:block;font-family:'Ubuntu',sans-serif;font-weight:500;margin-bottom:4px;}
 .name-grid span{color:var(--slate);font-size:0.92rem;}
 
+/* ── Text pages ── */
 .page-intro{padding:56px var(--page-pad) 12px;}
 .page-intro .lead{margin-bottom:0;}
 .page-body h2{margin-top:2em;}
 .page-body h2:first-of-type{margin-top:1.5em;}
 .page-links{margin-top:2.5em;padding-top:1.5em;border-top:1px solid var(--sand);}
 
-.icon-card{align-items:center;text-align:center;padding:18px;}
-.icon-card .card-icon{margin-inline:auto;}
-.icon-card h3{font-size:1rem;}
-
 /* ── Footer ── */
 footer.site{
   border-top:1px solid var(--sand);
-  margin-top:88px;
-  padding:36px 0 40px;
-  background:linear-gradient(180deg, transparent, rgba(237,230,218,0.55));
+  margin-top:var(--section-gap);
+  padding:40px 0;
 }
 footer.site .wrap{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  flex-wrap:wrap;
-  gap:16px 32px;
-  color:var(--slate);
-  font-size:14px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+  gap:16px 32px;color:var(--slate);font-size:0.9375rem;
 }
-.footer-brand{
-  display:flex;flex-direction:column;gap:6px;
-}
+.footer-brand{display:flex;flex-direction:column;gap:8px;}
 .footer-brand img{height:20px;width:auto;opacity:0.85;}
-.footer-links{
-  display:flex;flex-wrap:wrap;gap:4px 4px;
-  align-items:center;
-}
-.footer-links a{
-  color:var(--slate);
-  padding:8px 10px;
-  border-radius:6px;
-  min-height:44px;
-  display:inline-flex;align-items:center;
-}
-.footer-links a:hover{color:var(--rind);text-decoration:none;background:rgba(27,94,32,0.05);}
+.footer-brand span{font-family:'Ubuntu Mono',monospace;font-size:0.8125rem;}
+.footer-links{display:flex;flex-wrap:wrap;gap:0 28px;align-items:center;}
+.footer-links a{color:var(--slate);min-height:44px;display:inline-flex;align-items:center;}
+.footer-links a:hover{color:var(--seed);text-decoration:none;}
 
 /* ── Responsive ── */
-@media (max-width:900px){
+@media (max-width:1000px){
+  .split,.teaser{grid-template-columns:1fr;gap:48px;}
+  .req{padding:32px 28px;}
+  .req-grid{grid-template-columns:1fr;margin-top:24px;}
+  .req-item{padding-right:0;padding-bottom:24px;}
+  .req-item + .req-item{border-left:none;border-top:1px solid var(--sand);padding-left:0;padding-top:24px;}
+  .req-item:last-child{padding-bottom:0;}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .steps{grid-template-columns:1fr;}
 }
 
 /* Hamburger breakpoint ~720px */
 @media (max-width:720px){
   .nav-toggle{display:inline-flex;}
-
+  .nav{min-height:56px;}
   /* Full-bleed under header.site (sticky = containing block), no negative offsets */
   .nav-links{
     display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    right:0;
-    width:auto;
-    flex-direction:column;
-    align-items:stretch;
-    gap:2px;
+    position:absolute;top:100%;left:0;right:0;width:auto;
+    flex-direction:column;align-items:stretch;gap:2px;
     padding:12px var(--page-pad) 16px;
     background:rgba(251,247,240,0.98);
     border-bottom:1px solid var(--sand);
     box-shadow:0 16px 28px rgba(36,31,26,0.08);
   }
   .nav-links.is-open{display:flex;}
-  .nav-links a{
-    width:100%;
-    padding:12px 14px;
-    font-size:16px;
-    justify-content:flex-start;
-  }
+  .nav-links a{width:100%;padding:12px 0;font-size:1rem;justify-content:flex-start;}
 
-  .section{padding-block:48px 8px;}
-  .suite-strip{padding:22px 20px;}
-  .hero{padding-block:48px 28px;}
-  .hero h1{max-width:none;}
+  .hero{padding-block:32px 0;}
+  .hero-icon{height:72px;width:72px;}
+  .hero-eyebrow{margin-top:18px;font-size:0.75rem;}
+  .hero-title{margin-top:12px;letter-spacing:0.01em;line-height:1.08;max-width:none;}
+  .hero-lede{margin-top:18px;}
+  .hero-actions{flex-direction:column;align-self:stretch;gap:12px;margin-top:32px;}
+  .hero-actions .btn{width:100%;}
+
+  /* A 1440px-wide UI screenshot scaled to 390 is a grey smear, so the phone gets a full-bleed
+     crop of the top-left of the window instead — where the real rows and controls are. */
+  .carousel{padding-inline:0;margin-top:28px;}
+  .slide{gap:14px;}
+  .shot{
+    aspect-ratio:390 / 300;
+    border-left:none;border-right:none;
+    border-radius:0;
+    border-color:var(--sand);
+  }
+  .slide figcaption{
+    padding-inline:var(--page-pad);
+    text-align:left;
+    font-size:0.9375rem;
+    min-height:112px;
+  }
+  .js .carousel-controls{justify-content:space-between;padding-inline:var(--page-pad);gap:12px;margin-top:16px;}
+  .carousel-btn{width:44px;height:44px;}
+  .carousel-counter{display:none;}
+  .carousel-dots{order:-1;}
+
+  .terminal{font-size:0.78125rem;padding:14px;}
+  .point{padding:20px 0;}
 }
 
 @media (max-width:620px){
   .grid,.name-grid{grid-template-columns:1fr;}
-  .section{padding-block:40px 4px;}
   .card{padding:18px;}
-  .suite-strip{padding:20px 18px;}
-  footer.site{margin-top:56px;padding:28px 0 32px;}
-  .footer-links{gap:0;}
-}
-
-@media (max-width:375px){
-  .btn{padding:11px 16px;font-size:14px;}
-  .hero{padding-block:36px 24px;}
-  .hero-brand{margin-bottom:20px;}
+  footer.site .wrap{align-items:flex-start;}
+  .footer-links{gap:0 20px;}
 }
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
-  .btn,.card,.step,.card-icon,.nav-toggle-bars::before,
-  .nav-toggle-bars::after,.nav-toggle-bars span,.skip-link{
+  .btn,.card,.card-icon,.dot,.carousel-btn,
+  .nav-toggle-bars::before,.nav-toggle-bars::after,.nav-toggle-bars span,.skip-link{
     transition:none;
   }
-  .btn:hover,.card:hover,.step:hover{transform:none;}
-  .card:hover .card-icon{transform:none;}
-  body{background-attachment:scroll;}
-}
-
-/* ---------- Screenshot tour (carousel) ----------
-
-   Built on scroll-snap rather than transforms. Three reasons: with JavaScript off it is still a
-   scrollable, snapping gallery instead of one frozen image; a trackpad swipe and a touch drag work
-   for free, which a transform carousel has to reimplement badly; and the browser keeps track of
-   which slide is showing, so the dots are derived from real scroll position rather than from a
-   counter that can drift out of sync with what is on screen. */
-.carousel{position:relative;margin-top:24px;}
-
-.carousel-track{
-  display:flex;gap:0;
-  overflow-x:auto;overscroll-behavior-x:contain;
-  scroll-snap-type:x mandatory;
-  /* The scrollbar is noise here: the dots and arrows already say where you are. */
-  scrollbar-width:none;
-  border-radius:12px;
-}
-.carousel-track::-webkit-scrollbar{display:none;}
-.carousel-track:focus-visible{outline:2px solid var(--flesh-deep);outline-offset:4px;}
-
-.slide{
-  margin:0;flex:0 0 100%;scroll-snap-align:center;
-  /* Padding rather than gap: a gap on a snapping track leaves a sliver of the neighbour visible at
-     rest, which reads as a rendering fault rather than a hint. */
-  padding:0 2px;
-  display:flex;flex-direction:column;
-}
-.slide img{
-  width:100%;height:auto;display:block;
-  background:#fff;border:1px solid var(--stone);border-radius:12px;box-shadow:var(--shadow-md);
-}
-.slide figcaption{
-  margin-top:12px;font-size:0.95rem;line-height:1.6;color:var(--slate);
-  /* Reserves room for the longest caption so the track does not change height between slides —
-     a carousel that grows and shrinks as you page through it makes the whole section jump. */
-  min-height:3.2em;
-}
-.slide figcaption strong{color:var(--seed);}
-
-.carousel-controls{
-  display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px;
-}
-.carousel-btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:36px;height:36px;padding:0;
-  border:1px solid var(--stone);border-radius:999px;background:#fff;color:var(--rind);
-  cursor:pointer;transition:border-color .15s, color .15s, transform .15s;
-}
-.carousel-btn svg{width:18px;height:18px;}
-.carousel-btn:hover{border-color:var(--rind);transform:translateY(-1px);}
-.carousel-btn:focus-visible{outline:2px solid var(--flesh-deep);outline-offset:2px;}
-.carousel-btn[disabled]{opacity:0.35;cursor:default;transform:none;}
-
-.carousel-dots{display:flex;align-items:center;gap:8px;}
-.dot{
-  width:9px;height:9px;padding:0;border-radius:999px;cursor:pointer;
-  border:1px solid var(--stone);background:transparent;transition:background .15s, border-color .15s;
-}
-.dot:hover{border-color:var(--rind);}
-.dot[aria-current="true"]{background:var(--flesh-deep);border-color:var(--flesh-deep);}
-.dot:focus-visible{outline:2px solid var(--flesh-deep);outline-offset:3px;}
-
-.shot-link{display:block;}
-/* The image already carries the border and radius, so the link must not add its own underline or
-   colour — an underlined screenshot looks like a broken image. */
-.shot-link:hover{text-decoration:none;}
-.shot-link:hover img{border-color:var(--stripe);box-shadow:var(--shadow-md);}
-.shot-link:focus-visible img{outline:2px solid var(--flesh-deep);outline-offset:3px;}
-
-/* Always one slide at a time. There used to be a two-up rule above 1040px; a screenshot is the
-   product here, and two half-width screenshots are two things you cannot read rather than one you
-   can. */
-@media (prefers-reduced-motion: no-preference){
-  .carousel-track{scroll-behavior:smooth;}
-}
-
-/* ---------- Hero, with the carousel as its subject ----------
-   The hero no longer opens with a headline, so it needs less top padding than a text hero and the
-   controls need to sit centred under the image rather than ranged left with the copy. */
-.hero-tour{padding-top:28px;}
-.hero-tour .carousel{margin-top:0;}
-.hero-actions-centred{justify-content:center;margin-top:22px;}
-
-/* The headline, capitalised in rendering only.
-   Caps need three adjustments or they just shout: extra letter-spacing (capitals set tighter than
-   lowercase at the same tracking), a smaller size (caps occupy the full cap-height so they read
-   larger than the same point size in sentence case), and a tighter line-height. */
-.hero-title{
-  text-transform:uppercase;
-  letter-spacing:0.02em;
-  font-size:clamp(1.6rem, 4vw, 2.6rem);
-  line-height:1.15;
-  max-width:22ch;
-  margin:0 0 14px;
-}
-/* The description, as a subheading under it rather than body copy: narrower measure and a size
-   between the headline and the page's body text, so the eye goes title → subtitle → screenshot. */
-.hero-sub{
-  max-width:58ch;
-  font-size:1.02rem;
-  margin-bottom:26px;
 }
