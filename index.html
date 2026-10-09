@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Flotilla — a native macOS app for Apple containers</title>
-<meta name="description" content="Flotilla is a native macOS app for managing Apple's container CLI — containers, images, volumes, networks and virtual machines, with an embedded terminal. Free, no account, no telemetry.">
+<title>flotilla — a native macOS app for Apple containers</title>
+<meta name="description" content="flotilla is a native macOS app for managing Apple's container CLI — containers, images, volumes, networks and virtual machines, with an embedded terminal. Free, no account, no telemetry.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -40,11 +40,11 @@
   <section class="hero" id="tour">
     <div class="wrap hero-head">
       <img class="hero-icon" src="/assets/icons/flotilla.svg" alt="" width="88" height="88">
-      <p class="hero-eyebrow">Flotilla &middot; by melonfleet</p>
+      <p class="hero-eyebrow">flotilla &middot; by melonfleet</p>
       <!-- Uppercased in CSS, not in the markup: the text stays sentence case for screen readers,
            search results and the browser tab, and only the rendering is capitalised. -->
       <h1 class="hero-title">Apple&rsquo;s containers, with a window.</h1>
-      <p class="hero-lede">Apple shipped <code>container</code> for macOS and left it on the command line. Flotilla is the native app on top: containers, images, volumes, networks and the virtual machines they run inside &mdash; plus a real terminal in every container. Free, no account, no telemetry.</p>
+      <p class="hero-lede">Apple shipped <code>container</code> for macOS and left it on the command line. flotilla is the native app on top: containers, images, volumes, networks and the virtual machines they run inside &mdash; plus a real terminal in every container. Free, no account, no telemetry.</p>
     </div>
 
     <!-- The track is a scroll-snap strip, so with JavaScript disabled this is still a usable
@@ -54,27 +54,27 @@
       <div class="carousel-track" data-track tabindex="0" role="group" aria-label="Screenshots, use the arrow keys to change">
 
         <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
-          <div class="shot"><img src="/assets/shots/dash.webp" width="1440" height="940" alt="Flotilla's dashboard: memory-pressure graph over five minutes, disk and network throughput charts, and a table of every running container with CPU, memory and I/O."></div>
+          <div class="shot"><img src="/assets/shots/dash.webp" width="1440" height="940" alt="flotilla's dashboard: memory-pressure graph over five minutes, disk and network throughput charts, and a table of every running container with CPU, memory and I/O."></div>
           <figcaption><strong>Dashboard.</strong> What the whole Mac is doing &mdash; pressure over five minutes, disk and network throughput, and every container&rsquo;s CPU, memory and I/O in one table.</figcaption>
         </figure>
 
         <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
-          <div class="shot"><img src="/assets/shots/containers.webp" width="1440" height="940" loading="lazy" alt="Flotilla's container list: one row per container with live CPU and memory, published ports, IP address, and start, stop and delete controls."></div>
+          <div class="shot"><img src="/assets/shots/containers.webp" width="1440" height="940" loading="lazy" alt="flotilla's container list: one row per container with live CPU and memory, published ports, IP address, and start, stop and delete controls."></div>
           <figcaption><strong>Containers.</strong> Live CPU and memory per container, published ports, addresses, and start/stop/delete on the row. Switch to cards if you prefer.</figcaption>
         </figure>
 
         <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
-          <div class="shot"><img src="/assets/shots/terminal.webp" width="1440" height="940" loading="lazy" alt="Flotilla's terminal tab: a shell open inside the running nginx container, showing its version, a passing configuration test, the nginx master and worker processes, and a live HTTP 200 response."></div>
+          <div class="shot"><img src="/assets/shots/terminal.webp" width="1440" height="940" loading="lazy" alt="flotilla's terminal tab: a shell open inside the running nginx container, showing its version, a passing configuration test, the nginx master and worker processes, and a live HTTP 200 response."></div>
           <figcaption><strong>Terminal.</strong> A real shell inside any running container or machine &mdash; test a config, read the process table, ask it for a page, without leaving the window.</figcaption>
         </figure>
 
         <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
-          <div class="shot"><img src="/assets/shots/logs.webp" width="1440" height="940" loading="lazy" alt="Flotilla's log view: a single combined feed of log lines from several containers, each tagged with its source, above a filter field."></div>
+          <div class="shot"><img src="/assets/shots/logs.webp" width="1440" height="940" loading="lazy" alt="flotilla's log view: a single combined feed of log lines from several containers, each tagged with its source, above a filter field."></div>
           <figcaption><strong>Logs.</strong> Every source in one feed, each line tagged with where it came from, filterable by name or text. No tab-hopping between containers.</figcaption>
         </figure>
 
         <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
-          <div class="shot"><img src="/assets/shots/machines.webp" width="1440" height="940" loading="lazy" alt="Flotilla's machines view: the virtual machines containers run inside, with CPU and memory allocation and controls to create, resize, start, stop and open a shell."></div>
+          <div class="shot"><img src="/assets/shots/machines.webp" width="1440" height="940" loading="lazy" alt="flotilla's machines view: the virtual machines containers run inside, with CPU and memory allocation and controls to create, resize, start, stop and open a shell."></div>
           <figcaption><strong>Machines.</strong> The virtual machines your containers actually run inside &mdash; create, resize, start, stop, and open a shell in one.</figcaption>
         </figure>
 
@@ -108,7 +108,7 @@
       <div class="split-lead">
         <p class="eyebrow">What it does</p>
         <h2>Everything goes through Apple&rsquo;s own <code class="code-accent">container</code> CLI.</h2>
-        <p class="split-lead-body">Flotilla shows the exact command it used, so nothing happens that you could not have typed yourself.</p>
+        <p class="split-lead-body">flotilla shows the exact command it used, so nothing happens that you could not have typed yourself.</p>
         <p class="terminal"><span class="terminal-prompt" aria-hidden="true">$</span> container run -d --name api -p 8080:80 nginx:latest</p>
       </div>
       <div class="points">
@@ -143,7 +143,7 @@
         <div class="req-item">
           <span class="req-num" aria-hidden="true">02</span>
           <h3>Apple&rsquo;s <code>container</code> CLI</h3>
-          <p>Installed separately from <a class="mono-link" href="https://github.com/apple/container" target="_blank" rel="noopener">apple/container</a>. Flotilla drives that tool; it does not bundle or replace it.</p>
+          <p>Installed separately from <a class="mono-link" href="https://github.com/apple/container" target="_blank" rel="noopener">apple/container</a>. flotilla drives that tool; it does not bundle or replace it.</p>
         </div>
         <div class="req-item">
           <span class="req-num" aria-hidden="true">03</span>
@@ -153,14 +153,14 @@
       </div>
       <!-- Why there is no download button. A page that simply omitted it would read as an oversight;
            saying what has to be true first is the honest version. -->
-      <p class="req-note">Flotilla is not released yet. There is a signed, notarised <span class="mono">0.9.0</span> for testing; 1.0 follows. A download link appears here when the repository is public and a release exists.</p>
+      <p class="req-note">flotilla is not released yet. There is a signed, notarised <span class="mono">0.9.0</span> for testing; 1.0 follows. A download link appears here when the repository is public and a release exists.</p>
     </div>
   </section>
 
   <section class="wrap section">
     <div class="teaser">
       <h2>More fruit on the way.</h2>
-      <p>Flotilla is the first thing melonfleet has put out. There is more growing &mdash; quietly, and only announced when it is actually finished. Nothing to sign up for.</p>
+      <p>flotilla is the first thing melonfleet has put out. There is more growing &mdash; quietly, and only announced when it is actually finished. Nothing to sign up for.</p>
     </div>
   </section>
 
