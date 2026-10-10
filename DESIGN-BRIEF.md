@@ -1,4 +1,4 @@
-# Brief — melonfleet.dev, the flotilla launch page
+# Brief — melonfleet.dev, the Flotilla launch page
 
 Paste this into Claude Design. It is the whole brief; nothing below needs looking up.
 
@@ -6,7 +6,7 @@ Paste this into Claude Design. It is the whole brief; nothing below needs lookin
 
 ## The job
 
-Design the single page at **melonfleet.dev** that launches **flotilla**, the first product
+Design the single page at **melonfleet.dev** that launches **Flotilla**, the first product
 melonfleet has finished. One page. It is the entire first impression, and the traffic will arrive
 in a burst from Hacker News, Product Hunt and r/macapps — an audience that judges a developer tool
 by whether its landing page looks like someone cared.
@@ -34,14 +34,14 @@ animated counters.
 
 ## The product, honestly
 
-Apple shipped `container` for macOS and left it on the command line. flotilla is the native app on
+Apple shipped `container` for macOS and left it on the command line. Flotilla is the native app on
 top: containers, images, volumes, networks, and the virtual machines they run inside, plus a real
 terminal in every container.
 
 - **Free.** No account, no sign-in, no telemetry, no subscription, no paid tier.
 - Signed with a Developer ID and notarised by Apple, so it opens without a Gatekeeper argument.
 - **Requires** macOS 26 or later on Apple silicon, and Apple's `container` CLI installed
-  separately from `github.com/apple/container`. flotilla drives that tool; it does not bundle or
+  separately from `github.com/apple/container`. Flotilla drives that tool; it does not bundle or
   replace it.
 - Not released yet at time of writing. There is a signed, notarised 0.9.0 for testing; 1.0 follows.
 
@@ -49,10 +49,10 @@ terminal in every container.
 
 These are decided. Design within them.
 
-1. **Only flotilla appears.** melonfleet has other products in progress; none of them are named,
+1. **Only Flotilla appears.** melonfleet has other products in progress; none of them are named,
    listed, dated, or hinted at specifically anywhere on the site. There is one teaser block — "more
    fruit on the way" — which names nothing and asks for no email address.
-2. **Hero order, exactly:** app icon → the line `flotilla · by melonfleet` → headline → short
+2. **Hero order, exactly:** app icon → the line `Flotilla · by melonfleet` → headline → short
    description as a subheading → screenshot carousel → two buttons. The carousel must be high on
    the page; the screenshots are the pitch.
 3. **The headline is set in capitals.** This is the owner's explicit choice and a deliberate
@@ -110,12 +110,12 @@ small 0.875rem, mono 0.8125rem. You may refine the scale; keep the families.
 
 **Voice** — intelligent, warm, plain-spoken. Sentence case everywhere (the hero headline is the one
 stated exception). Say what it does. No jargon-as-drama, no "successfully", no "please". The
-melonfleet wordmark is always lowercase, and so is the product: always `flotilla`, even at the start of a sentence (the owner, 9 October 2026).
+melonfleet wordmark is always lowercase; the product is always `Flotilla`.
 
 ## Assets available
 
 - `assets/icons/flotilla.svg` — the app icon: watermelon-slice ground with three sails. This is
-  flotilla's identity and should lead the hero rather than the melonfleet wordmark.
+  Flotilla's identity and should lead the hero rather than the melonfleet wordmark.
 - `assets/melonfleet-wordmark.svg` — the maker's mark. Belongs in the header and footer, not the
   hero, on a page about one product.
 - `assets/shots/{dash,containers,terminal,logs,machines}.png` — 1440×940, captured from the running
@@ -127,18 +127,18 @@ popover, the card view, or the collapsed icon rail.
 The terminal shot that used to be the tour's biggest gap now exists, and it is third in the
 carousel: a shell inside the running `web` container showing nginx's version, a passing `nginx -t`,
 the master and worker process table, the actual server block, and a live `HTTP/1.1 200 OK` with
-headers. Everything in it is read-only and real. Worth knowing for next time: flotilla's terminal
+headers. Everything in it is read-only and real. Worth knowing for next time: Flotilla's terminal
 view publishes **no accessibility information at all** — only its scrollbar — so it cannot be
 driven or verified through the accessibility tree, and it accepts typed characters as unicode
 strings but silently drops Return sent as a virtual keycode.
 
 ## Content — use this copy, do not invent claims
 
-**Eyebrow:** `flotilla · by melonfleet`
+**Eyebrow:** `Flotilla · by melonfleet`
 
 **Headline:** Apple's containers, with a window.
 
-**Subheading:** Apple shipped `container` for macOS and left it on the command line. flotilla is
+**Subheading:** Apple shipped `container` for macOS and left it on the command line. Flotilla is
 the native app on top: containers, images, volumes, networks and the virtual machines they run
 inside — plus a real terminal in every container. Free, no account, no telemetry.
 
@@ -157,7 +157,7 @@ inside — plus a real terminal in every container. Free, no account, no telemet
   stop, and open a shell in one.
 
 **"What it does"** — three points, currently framed as: everything goes through Apple's own
-`container` CLI, and flotilla shows the exact command it used, so nothing happens that the user
+`container` CLI, and Flotilla shows the exact command it used, so nothing happens that the user
 could not have typed themselves. Then: *Run and watch* (lifecycle plus live stats and logs),
 *Shell straight in* (a real terminal in any container or machine), *Everything else too* (images,
 volumes, networks, machines).
@@ -165,7 +165,7 @@ volumes, networks, machines).
 **Requirements** — macOS 26 or later on Apple silicon · Apple's `container` CLI from
 `apple/container` · nothing else: no account, no telemetry, signed and notarised.
 
-**Teaser:** "More fruit on the way. flotilla is the first thing melonfleet has put out. There is
+**Teaser:** "More fruit on the way. Flotilla is the first thing melonfleet has put out. There is
 more growing — quietly, and only announced when it is actually finished. Nothing to sign up for."
 
 ## Quality bar
@@ -188,7 +188,7 @@ more growing — quietly, and only announced when it is actually finished. Nothi
 Fake testimonials or quotes. Invented download counts, star counts, or "used by N developers".
 Logo walls. Gradient blobs and floating 3D shapes. Autoplay anything. Stock photography of people.
 A "Get started free" button that leads to a 404. Comparison tables against Docker Desktop that
-overstate the case — flotilla does less than Docker Desktop and should not pretend otherwise. Any
+overstate the case — Flotilla does less than Docker Desktop and should not pretend otherwise. Any
 claim about the other melonfleet products.
 
 ## Implementation notes, learned the hard way
