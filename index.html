@@ -47,52 +47,9 @@
       <p class="hero-lede">Apple shipped <code>container</code> for macOS and left it on the command line. Flotilla is the native app on top: containers, images, volumes, networks and the virtual machines they run inside &mdash; plus a real terminal in every container. Free, no account, no telemetry.</p>
     </div>
 
-    <!-- The track is a scroll-snap strip, so with JavaScript disabled this is still a usable
-         swipeable, snapping gallery rather than a single frozen image. The buttons, dots and
-         counter below are an enhancement on top of it, not the mechanism. -->
-    <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Screenshot tour">
-      <div class="carousel-track" data-track tabindex="0" role="group" aria-label="Screenshots, use the arrow keys to change">
-
-        <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
-          <div class="shot"><img src="/assets/shots/dash.webp" width="1440" height="940" alt="Flotilla's dashboard: memory-pressure graph over five minutes, disk and network throughput charts, and a table of every running container with CPU, memory and I/O."></div>
-          <figcaption><strong>Dashboard.</strong> What the whole Mac is doing &mdash; pressure over five minutes, disk and network throughput, and every container&rsquo;s CPU, memory and I/O in one table.</figcaption>
-        </figure>
-
-        <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
-          <div class="shot"><img src="/assets/shots/containers.webp" width="1440" height="940" loading="lazy" alt="Flotilla's container list: one row per container with live CPU and memory, published ports, IP address, and start, stop and delete controls."></div>
-          <figcaption><strong>Containers.</strong> Live CPU and memory per container, published ports, addresses, and start/stop/delete on the row. Switch to cards if you prefer.</figcaption>
-        </figure>
-
-        <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
-          <div class="shot"><img src="/assets/shots/terminal.webp" width="1440" height="940" loading="lazy" alt="Flotilla's terminal tab: a shell open inside the running nginx container, showing its version, a passing configuration test, the nginx master and worker processes, and a live HTTP 200 response."></div>
-          <figcaption><strong>Terminal.</strong> A real shell inside any running container or machine &mdash; test a config, read the process table, ask it for a page, without leaving the window.</figcaption>
-        </figure>
-
-        <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
-          <div class="shot"><img src="/assets/shots/logs.webp" width="1440" height="940" loading="lazy" alt="Flotilla's log view: a single combined feed of log lines from several containers, each tagged with its source, above a filter field."></div>
-          <figcaption><strong>Logs.</strong> Every source in one feed, each line tagged with where it came from, filterable by name or text. No tab-hopping between containers.</figcaption>
-        </figure>
-
-        <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
-          <div class="shot"><img src="/assets/shots/machines.webp" width="1440" height="940" loading="lazy" alt="Flotilla's machines view: the virtual machines containers run inside, with CPU and memory allocation and controls to create, resize, start, stop and open a shell."></div>
-          <figcaption><strong>Machines.</strong> The virtual machines your containers actually run inside &mdash; create, resize, start, stop, and open a shell in one.</figcaption>
-        </figure>
-
-      </div>
-
-      <div class="carousel-controls">
-        <button type="button" class="carousel-btn" data-prev aria-label="Previous screenshot"><span aria-hidden="true">&larr;</span></button>
-        <div class="carousel-dots" data-dots>
-          <button type="button" class="dot" data-goto="0" aria-label="Show the dashboard" aria-current="true"></button>
-          <button type="button" class="dot" data-goto="1" aria-label="Show the container list"></button>
-          <button type="button" class="dot" data-goto="2" aria-label="Show a container terminal"></button>
-          <button type="button" class="dot" data-goto="3" aria-label="Show the log view"></button>
-          <button type="button" class="dot" data-goto="4" aria-label="Show the machines view"></button>
-        </div>
-        <button type="button" class="carousel-btn" data-next aria-label="Next screenshot"><span aria-hidden="true">&rarr;</span></button>
-        <span class="carousel-counter" data-counter aria-hidden="true">01 / 05</span>
-      </div>
-    </div>
+    <!-- The screenshot carousel lived here. Its screenshots were out of date and were removed on
+         19 October 2026 (Kamal); new ones come later. The carousel's CSS and script are kept, idle,
+         so a new set can drop back in as figures inside a `data-carousel` block. -->
 
     <div class="wrap hero-foot">
       <div class="hero-actions">

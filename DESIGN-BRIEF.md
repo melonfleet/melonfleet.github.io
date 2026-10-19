@@ -118,8 +118,9 @@ melonfleet wordmark is always lowercase; the product is always `Flotilla`.
   Flotilla's identity and should lead the hero rather than the melonfleet wordmark.
 - `assets/melonfleet-wordmark.svg` — the maker's mark. Belongs in the header and footer, not the
   hero, on a page about one product.
-- `assets/shots/{dash,containers,terminal,logs,machines}.png` — 1440×940, captured from the running
-  app, window only, no drop shadow, light appearance. Real data, not mocked.
+- ~~`assets/shots/{dash,containers,terminal,logs,machines}.png`~~ — **removed 19 October 2026**: they
+  showed the app before the rows, split view and window bar redesign. New screenshots come later, at
+  1440×940, captured from the running app, window only, no drop shadow, light appearance, real data.
 
 You may ask for more screenshots and they can be produced on request: dark appearance, the menu-bar
 popover, the card view, or the collapsed icon rail.
