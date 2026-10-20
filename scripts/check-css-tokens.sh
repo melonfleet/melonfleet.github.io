@@ -28,7 +28,10 @@ if missing:
 # --- classes
 css_classes = set(re.findall(r'\.([a-zA-Z][\w-]*)', css))
 html_classes = set()
-for page in pathlib.Path('.').glob('*.html'):
+# Every page, including ones in folders such as flotilla/beta/, but not untracked imports.
+pages = [pg for pg in pathlib.Path('.').rglob('*.html')
+         if not any(part.startswith('.') or part == 'design-import' for part in pg.parts)]
+for page in pages:
     for attr in re.findall(r'class="([^"]+)"', page.read_text()):
         html_classes.update(attr.split())
 unstyled = sorted(c for c in html_classes - css_classes if not c.startswith('js-'))

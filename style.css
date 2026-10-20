@@ -429,6 +429,258 @@ header.site{
 .page-body h2:first-of-type{margin-top:1.5em;}
 .page-links{margin-top:2.5em;padding-top:1.5em;border-top:1px solid var(--sand);}
 
+/* ── Beta test plan (/flotilla/beta/) ──
+   The same cards, rules and type as the home page's requirements block. Pass, fail and skip are
+   state, so they take the status colours; everything else stays in the brand neutrals. A marked
+   button is a tint with ink text rather than white on the status colour: white on success
+   measures about 3.3:1, under AA for text this size. */
+.beta-page{--sticky-top:69px;}
+.beta-page [hidden]{display:none !important;}
+.visually-hidden{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;
+}
+.beta-intro{padding:56px 0 8px;max-width:760px;}
+.beta-icon{width:64px;height:64px;margin:0 0 20px;}
+.beta-intro .lead{margin:0;}
+
+.beta-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:40px;}
+.beta-fact{padding-right:32px;}
+.beta-fact + .beta-fact{border-left:1px solid var(--sand);padding-left:32px;}
+.beta-fact:last-child{padding-right:0;}
+.beta-fact-title{font-size:clamp(1.0625rem, 1.4vw, 1.25rem);line-height:1.3;margin:0 0 8px;}
+.beta-fact p{margin:0;color:var(--slate);font-size:1rem;}
+
+.beta-card{
+  margin-top:40px;
+  background:var(--pith);
+  border:1px solid var(--sand);
+  border-radius:16px;
+  padding:36px 40px;
+}
+.beta-card h2{margin:0 0 18px;}
+.beta-card p:last-child{margin-bottom:0;}
+.beta-card-note p{max-width:78ch;}
+.beta-warn{
+  padding:14px 18px;
+  border-left:3px solid var(--warning);
+  background:var(--cream);
+  border-radius:0 8px 8px 0;
+  font-size:0.9375rem;
+}
+
+.beta-before{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:48px;align-items:start;}
+.beta-list{margin:0;padding-left:1.2em;}
+.beta-list li{margin:0 0 10px;}
+.beta-list li:last-child{margin-bottom:0;}
+.beta-setup{
+  background:var(--cream);
+  border:1px solid var(--sand);
+  border-radius:12px;
+  padding:20px 22px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.beta-setup-title{margin:0;font-family:'Ubuntu',sans-serif;font-weight:500;}
+.beta-field{display:flex;flex-direction:column;gap:4px;}
+.beta-field-label{font-size:0.9375rem;font-weight:600;}
+.beta-field-hint{font-size:0.8125rem;color:var(--slate);}
+.beta-field input,.beta-field select{
+  font:inherit;font-size:0.9375rem;
+  min-height:44px;
+  padding:8px 12px;
+  color:var(--seed);
+  background:var(--pith);
+  border:1px solid var(--stone);
+  border-radius:8px;
+}
+.beta-field input::placeholder{color:var(--slate);opacity:1;}
+.beta-field select{
+  -webkit-appearance:none;appearance:none;
+  height:44px;padding-right:40px;cursor:pointer;
+  /* A chevron drawn from two gradients, so no image and no colour from outside the palette. */
+  background-image:linear-gradient(45deg, transparent 50%, var(--slate) 50%),
+                   linear-gradient(135deg, var(--slate) 50%, transparent 50%);
+  background-position:calc(100% - 20px) 50%, calc(100% - 15px) 50%;
+  background-size:5px 5px, 5px 5px;
+  background-repeat:no-repeat;
+}
+.beta-field input:focus-visible,.beta-field select:focus-visible{outline:2px solid var(--rind);outline-offset:1px;border-color:var(--rind);}
+
+.beta-toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:56px;}
+.beta-toc-col{min-width:0;}
+.beta-toc-title{font-size:clamp(1.0625rem, 1.4vw, 1.25rem);line-height:1.3;margin:0 0 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.beta-toc-title a{color:var(--seed);}
+.beta-toc-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--sand);}
+.beta-toc-list li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:8px 0;border-bottom:1px solid var(--sand);
+}
+.beta-toc-list a{min-height:28px;display:inline-flex;align-items:center;}
+.beta-toc-meta{font-family:'Ubuntu Mono',monospace;font-size:0.8125rem;color:var(--slate);white-space:nowrap;}
+.beta-tag{
+  font-family:'Ubuntu Mono',monospace;font-size:0.75rem;letter-spacing:0.06em;
+  padding:2px 8px;border-radius:99px;
+  border:1px solid var(--stone);color:var(--slate);
+}
+.beta-tag-core{border-color:var(--rind);color:var(--rind);}
+
+/* Pinned under the site header while reading the steps. Hidden without scripting, since it
+   would only ever read zero. */
+.beta-progress{
+  display:none;
+  position:sticky;top:var(--sticky-top);z-index:30;
+  margin-top:48px;
+  padding:12px 0;
+  background:rgba(251,247,240,0.96);
+  border-bottom:1px solid var(--sand);
+  align-items:center;gap:20px;
+}
+.js .beta-progress{display:flex;}
+.beta-progress-text{margin:0;font-size:0.9375rem;white-space:nowrap;}
+.beta-progress-split{color:var(--slate);}
+.beta-meter{flex:1;display:flex;height:6px;border-radius:99px;background:var(--sand);overflow:hidden;min-width:60px;}
+.beta-meter span{display:block;height:100%;width:0;}
+.beta-meter-pass{background:var(--success);}
+.beta-meter-fail{background:var(--danger);}
+.beta-meter-skip{background:var(--slate);}
+.beta-link-btn{
+  font:inherit;font-size:0.9375rem;font-weight:600;
+  min-height:40px;padding:6px 14px;
+  color:var(--rind);background:var(--pith);
+  border:1px solid var(--stone);border-radius:8px;
+  cursor:pointer;white-space:nowrap;
+}
+.beta-link-btn:hover{border-color:var(--rind);}
+
+.beta-path{padding-top:64px;}
+.beta-path-head{max-width:760px;margin-bottom:8px;}
+.beta-path-head h2{margin:0;}
+.beta-path-lede{margin:12px 0 0;color:var(--slate);}
+.beta-path,.beta-section,.step,.beta-finish{scroll-margin-top:calc(var(--sticky-top) + 72px);}
+
+.beta-section{
+  margin-top:32px;
+  background:var(--pith);
+  border:1px solid var(--sand);
+  border-radius:16px;
+  padding:28px 32px 8px;
+}
+.beta-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 24px;flex-wrap:wrap;}
+.beta-section-head h3{margin:0;}
+.beta-section-meta{margin:0;font-family:'Ubuntu Mono',monospace;font-size:0.8125rem;color:var(--slate);}
+.beta-section[data-complete="true"] .beta-section-meta{color:var(--rind);}
+.beta-section-intro{margin:10px 0 0;color:var(--slate);font-size:1rem;max-width:78ch;}
+
+.beta-steps{list-style:none;margin:16px 0 0;padding:0;}
+.step{
+  position:relative;
+  padding:20px 0 20px 20px;
+  border-top:1px solid var(--sand);
+}
+.step::before{
+  content:"";position:absolute;left:0;top:20px;bottom:20px;width:3px;border-radius:2px;
+  background:var(--sand);
+}
+.step[data-result="pass"]::before{background:var(--success);}
+.step[data-result="fail"]::before{background:var(--danger);}
+.step[data-result="skip"]::before{background:var(--slate);}
+.step-head{
+  margin:0 0 8px;
+  font-family:'Ubuntu',sans-serif;font-weight:500;font-size:1.0625rem;line-height:1.35;
+  display:flex;gap:12px;align-items:baseline;
+}
+.step-title{text-wrap:pretty;}
+.step-num{font-family:'Ubuntu Mono',monospace;font-size:0.875rem;color:var(--rind);min-width:2.2em;}
+.step-do,.step-expect{
+  margin:0 0 6px 3.1em;font-size:1rem;max-width:80ch;
+  display:grid;grid-template-columns:5em minmax(0,1fr);gap:0 8px;align-items:baseline;
+}
+.step-expect{color:var(--slate);}
+.step-label{
+  font-family:'Ubuntu Mono',monospace;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--slate);
+}
+.step-do-text,.step-expect-text{color:var(--seed);}
+.step-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0 3.1em;}
+.step-btn{
+  font:inherit;font-size:0.875rem;font-weight:600;
+  min-height:36px;min-width:72px;padding:6px 14px;
+  color:var(--seed);background:var(--pith);
+  border:1px solid var(--stone);border-radius:99px;
+  cursor:pointer;
+  transition:border-color .15s ease, background .15s ease;
+}
+.step-btn:hover{border-color:var(--seed);}
+.step-btn[aria-pressed="true"]::before{content:"✓ ";}
+.step-btn-pass[aria-pressed="true"]{border-color:var(--success);background:rgba(29,158,117,0.12);}
+.step-btn-fail[aria-pressed="true"]{border-color:var(--danger);background:rgba(201,48,44,0.10);}
+.step-btn-skip[aria-pressed="true"]{border-color:var(--slate);background:var(--sand);}
+.step-report{margin:10px 0 0 3.1em;font-size:0.9375rem;color:var(--slate);}
+.step-report a{font-weight:600;}
+
+/* First impressions: free text between sections, sent with the summary. Only with scripting,
+   since without it nothing could keep or send what was typed. */
+.beta-impressions{
+  display:none;
+  margin:4px 0 24px;
+  padding:18px 20px;
+  background:var(--cream);
+  border:1px solid var(--sand);
+  border-radius:12px;
+}
+.js .beta-impressions{display:block;}
+.beta-impressions-label{display:block;font-family:'Ubuntu',sans-serif;font-weight:500;font-size:1rem;}
+.beta-impressions-hint{margin:4px 0 10px;font-size:0.9375rem;color:var(--slate);max-width:78ch;}
+.beta-impressions textarea{
+  display:block;width:100%;min-height:76px;resize:vertical;
+  font:inherit;font-size:0.9375rem;line-height:1.5;
+  padding:10px 12px;
+  color:var(--seed);background:var(--pith);
+  border:1px solid var(--stone);border-radius:8px;
+}
+.beta-impressions textarea::placeholder{color:var(--slate);opacity:1;}
+.beta-impressions textarea:focus-visible{outline:2px solid var(--rind);outline-offset:1px;border-color:var(--rind);}
+
+.beta-glossary{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 20px;max-width:86ch;}
+.beta-glossary dt{font-weight:600;}
+.beta-glossary dd{margin:0;color:var(--slate);}
+
+.beta-finish{margin-top:64px;}
+.beta-totals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:24px 0 28px;}
+.beta-totals div{border-top:1px solid var(--sand);padding-top:12px;}
+.beta-totals dt{font-family:'Ubuntu Mono',monospace;font-size:0.8125rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);}
+.beta-totals dd{margin:4px 0 0;font-family:'Ubuntu',sans-serif;font-weight:500;font-size:2rem;line-height:1.1;}
+.beta-finish-actions{display:none;flex-wrap:wrap;gap:16px;}
+.js .beta-finish-actions{display:flex;}
+.beta-finish-note{margin-top:24px;font-size:0.9375rem;}
+
+@media (max-width:1000px){
+  .beta-facts{grid-template-columns:minmax(0,1fr);}
+  .beta-fact{padding:0 0 20px;}
+  .beta-fact + .beta-fact{border-left:none;border-top:1px solid var(--sand);padding:20px 0;}
+  .beta-before,.beta-toc{grid-template-columns:minmax(0,1fr);gap:32px;}
+}
+@media (max-width:720px){
+  .beta-page{--sticky-top:57px;}
+  .beta-intro{padding-top:36px;}
+  .beta-card{padding:24px 20px;}
+  .beta-section{padding:22px 18px 4px;}
+  .beta-progress{gap:12px;flex-wrap:wrap;}
+  .beta-progress-split{display:none;}
+  .step{padding-left:14px;}
+  .step-do,.step-expect,.step-actions,.step-report{margin-left:0;}
+  .step-do,.step-expect{display:block;}
+  .step-label{display:block;margin-bottom:2px;}
+  .step-btn{flex:1;}
+  .beta-totals{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .beta-impressions{padding:16px 14px;}
+  .beta-glossary{grid-template-columns:minmax(0,1fr);gap:2px;}
+  .beta-glossary dd{margin-bottom:10px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .step-btn{transition:none;}
+}
+
 /* ── Footer ── */
 footer.site{
   border-top:1px solid var(--sand);
